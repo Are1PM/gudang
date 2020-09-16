@@ -66,7 +66,7 @@
                               if (empty($bp_image))
                                    echo "<img src='../assets/img/no-img.png' width='100' height='110'><br>No Image";
                               else
-                                   echo "<img class='shadow' src='../assets/img/$bp_image' width='100' height='110' title='$image'>";
+                                   echo "<img class='shadow' src='../assets/img/$bp_image' width='100' height='110' title='$bp_image'>";
                               ?>&nbsp;</td>
                          <td><?= $bp_nama ?><div align="center"></div>
                          </td>
