@@ -3,8 +3,8 @@
 //cek button
 if ($_POST['Submit'] == "Submit") {
 //Kirimkan Variabel
-	$bp_id	= $_POST['bp_id'];
-	$nama_brg	= $_POST['bp_nama'];
+	$bp_nama	= $_POST['bp_nama'];
+	$bp_sumber	= $_POST['bp_sumber'];
 	$bp_jenis_barang	= stripslashes ($_POST['bp_jenis_barang']);
 	$bp_no_inventaris = stripslashes ($_POST['bp_no_inventaris']);
 	$bp_image		= $_FILES['bp_image']['name'];
@@ -12,7 +12,7 @@ if ($_POST['Submit'] == "Submit") {
 	$bp_tgl_keluar	= stripslashes ($_POST['bp_tgl_keluar']);
 	$bp_jumlah_masuk	= stripslashes ($_POST['bp_jumlah_masuk']);
 	$bp_jumlah_keluar	= stripslashes ($_POST['bp_jumlah_keluar']);
-	$bp_thn_perolehan	= stripslashes($_POST['tahun_perolehan']);
+	$bp_thn_perolehan	= stripslashes($_POST['bp_thn_perolehan']);
 	$bp_stok_brg	= stripslashes ($_POST['bp_stok_brg']);
 	$bp_kategori_id	= stripslashes ($_POST['bp_kategori_id']);
 	
@@ -26,15 +26,15 @@ if ($_POST['Submit'] == "Submit") {
 	
 	//validasi data jika kosong
 	if (
-		empty($_POST['bp_id']) ||
-		empty($_POST['nama_brg']) ||
+		empty($_POST['bp_nama']) ||
 		empty($_POST['bp_no_inventaris']) ||
+		empty($_POST['bp_sumber']) ||
 		empty($_POST['bp_jenis_barang']) ||
 		empty($_POST['bp_tgl_masuk']) ||
 		empty($_POST['bp_tgl_keluar']) ||
 		empty($_POST['bp_jumlah_masuk']) ||
 		empty($_POST['bp_jumlah_keluar']) ||
-		empty($_POST['tahun_perolehan']) ||
+		empty($_POST['bp_thn_perolehan']) ||
 		empty($_POST['bp_stok_brg']) ||
 		empty($_POST['bp_kategori_id'])
 		) {
@@ -49,7 +49,7 @@ if ($_POST['Submit'] == "Submit") {
 	else {
 	include "../koneksi.php";
 //cek Kode Barang di database
-$cek=mysqli_num_rows(mysqli_query($Open,"SELECT bp_id FROM barang WHERE bp_id='$_POST[bp_id]'"));
+$cek=mysqli_num_rows(mysqli_query($Open,"SELECT bp_id FROM barang_perlengkapan WHERE bp_no_inventaris='$_POST[bp_no_inventaris]'"));
 if ($cek > 0) {
 ?>
 		<script language="JavaScript">
@@ -60,18 +60,19 @@ if ($cek > 0) {
 }
 //Masukan data ke Table Login
 $input	="INSERT INTO barang_perlengkapan VALUES (
-		'$bp_id',
-		'$nama_brg',
+		null,
+		'$bp_nama',
+		'$bp_thn_perolehan',
+		'$bp_sumber',
 		'$bp_no_inventaris',
-		'$bp_jenis_barang',
 		'$bp_tgl_masuk',
 		'$bp_tgl_keluar',
+		'$bp_jenis_barang',
 		'$bp_jumlah_masuk',
 		'$bp_jumlah_keluar',
-		'$tahun_perolehan',
 		'$bp_stok_brg',
-		'$bp_kategori_id',
-		'$bp_image'
+		'$bp_image',
+		'$bp_kategori_id'
 		)";
 $query_input =mysqli_query($Open,$input);
 
