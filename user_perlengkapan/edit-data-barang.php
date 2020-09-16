@@ -12,6 +12,7 @@ if (isset($_POST['Edit'])) {
 	$bp_id	= $_POST['hbp_id'];
 	$bp_image		= $_FILES['bp_image']['name'];
 	$bp_nama	= $_POST['bp_nama'];
+     $bp_sumber	= $_POST['bp_sumber'];
 	$bp_no_inventaris	= $_POST['bp_no_inventaris'];
      $bp_jenis_barang	= $_POST['bp_jenis_barang'];
      $bp_tgl_masuk	= stripslashes($_POST['bp_tgl_masuk']);
@@ -33,6 +34,7 @@ if (isset($_POST['Edit'])) {
 	//update data
 	$query = "UPDATE barang_perlengkapan SET 
                     bp_nama='$bp_nama',
+                    bp_sumber='$bp_sumber',
                     bp_no_inventaris='$bp_no_inventaris',
                     bp_jenis_barang='$bp_jenis_barang',
                     bp_tgl_masuk='$bp_tgl_masuk',
@@ -60,6 +62,7 @@ $hasil = mysqli_fetch_array ($sql);
 $bp_id	= $hasil['bp_id'];
 $bp_image_data	= $hasil['bp_image'];
 $bp_nama		= $hasil['bp_nama'];
+$bp_sumber		= $hasil['bp_sumber'];
 $bp_no_inventaris	= $hasil['bp_no_inventaris'];
 $bp_jenis_barang	= $hasil['bp_jenis_barang'];
 $bp_tgl_masuk	= stripslashes ($hasil['bp_tgl_masuk']);
@@ -100,9 +103,6 @@ $tampil_kategori = mysqli_query($Open, $q);
                     <td width="550" align="center"><b>Data Barang</b></td>
                </tr>
                <tr>
-                    <td width="18">&nbsp;</td>
-                    <td width="142" height="36">Kode Barang</td>
-                    <td width="550">:<b><?=$bp_id?>
                     <input type="hidden" name="hbp_id" value="<?=$bp_id?>"></b></td>
                </tr>
                <tr>
@@ -119,6 +119,11 @@ $tampil_kategori = mysqli_query($Open, $q);
                     <td>&nbsp;</td>
                     <td height="36">Jenis Barang</td>
                     <td><input type="text" name="bp_jenis_barang" size="20" maxlength="20" value="<?=$bp_jenis_barang?>"></td>
+               </tr>
+               <tr>
+                    <td>&nbsp;</td>
+                    <td height="36">Sumber Barang</td>
+                    <td><input type="text" name="bp_sumber" size="30" maxlength="30" value="<?=$bp_sumber?>"></td>
                </tr>
                <tr>
 				<td height="36">&nbsp;</td>
