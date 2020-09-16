@@ -19,7 +19,7 @@ $pdf->setPrintFooter(false);
 // $pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
 
 // set margins
-$pdf->SetMargins(2, 4, 2);
+$pdf->SetMargins(20, 4, 2);
 
 // set auto page breaks
 // $pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
@@ -50,9 +50,8 @@ $html = '
      <table width="100%" border="1">
           <tr>
                <th width="4%" align="center">No</th>
-               <th width="12%"align="center">Kode Barang</th>
-               <th width="20%" align="center">Nama Barang</th>
                <th width="10%" align="center">No Inventaris</th>
+               <th width="20%" align="center">Nama Barang</th>
                <th width="7%" align="center">Jenis Barang</th>
                <th width="8%" align="center">Tanggal Masuk</th>
                <th width="8%" align="center">Tanggal Keluar</th>
@@ -64,22 +63,22 @@ $html = '
           </tr>
      
      ';
-$Cari = "SELECT * FROM barang b INNER JOIN satuan s ON s.id_satuan=b.id_satuan INNER JOIN kategori k ON k.id_kategori=b.id_kategori ORDER BY kode_brg";
+$Cari = "SELECT * FROM barang_perlengkapan bp INNER JOIN kategori k ON k.kategori_id=bp.bp_kategori_id ORDER BY bp_id";
 $Tampil = mysqli_query($Open, $Cari);
 $nomer = 0;
 while ($hasil = mysqli_fetch_array($Tampil)) {
-     $kode_brg     = stripslashes($hasil['kode_brg']);
-     $image          = stripslashes($hasil['image']);
-     $nama_brg     = stripslashes($hasil['nama_brg']);
-     $no_inventaris     = stripslashes($hasil['no_inventaris']);
-     $jenis_brg     = stripslashes($hasil['jenis_brg']);
-     $tgl_masuk     = stripslashes($hasil['tgl_masuk']);
-     $tgl_keluar     = stripslashes($hasil['tgl_keluar']);
-     $jumlah_masuk     = stripslashes($hasil['jumlah_masuk']);
-     $jumlah_keluar     = stripslashes($hasil['jumlah_keluar']);
-     $tahun_perolehan     = stripslashes($hasil['tahun_perolehan']);
-     $nama_satuan     = stripslashes($hasil['nama_satuan']);
-     $nama_kategori     = stripslashes($hasil['nama_kategori']); {
+
+     $bp_image          = stripslashes($hasil['bp_image']);
+     $bp_nama     = stripslashes($hasil['bp_nama']);
+     $bp_no_inventaris     = stripslashes($hasil['bp_no_inventaris']);
+     $bp_jenis_barang     = stripslashes($hasil['bp_jenis_barang']);
+     $bp_tgl_masuk     = stripslashes($hasil['bp_tgl_masuk']);
+     $bp_tgl_keluar     = stripslashes($hasil['bp_tgl_keluar']);
+     $bp_jumlah_masuk     = stripslashes($hasil['bp_jumlah_masuk']);
+     $bp_jumlah_keluar     = stripslashes($hasil['bp_jumlah_keluar']);
+     $bp_thn_perolehan     = stripslashes($hasil['bp_thn_perolehan']);
+     $bp_stok_brg     = stripslashes($hasil['bp_stok_brg']);
+     $kategori_nama     = stripslashes($hasil['kategori_nama']); {
           $nomer++;
 
           $html .= "
@@ -102,19 +101,16 @@ while ($hasil = mysqli_fetch_array($Tampil)) {
           //      }
           // $html .= "</td>";
           $html .= "
-          <td>$kode_brg
-          </td>
-          <td>$nama_brg
-          </td>
-          <td>$no_inventaris</td>
-          <td>$jenis_brg</td>
-          <td>$tgl_masuk</td>
-          <td>$tgl_keluar</td>
-          <td>$tahun_perolehan</td>
-          <td>$jumlah_masuk</td>
-          <td>$jumlah_keluar</td>
-          <td>$nama_satuan</td>
-          <td>$nama_kategori</td>
+          <td>$bp_no_inventaris</td>
+          <td>$bp_nama</td>
+          <td>$bp_jenis_barang</td>
+          <td>$bp_tgl_masuk</td>
+          <td>$bp_tgl_keluar</td>
+          <td>$bp_thn_perolehan</td>
+          <td>$bp_jumlah_masuk</td>
+          <td>$bp_jumlah_keluar</td>
+          <td>$bp_stok_brg</td>
+          <td>$kategori_nama</td>
           
      </tr>
      ";
