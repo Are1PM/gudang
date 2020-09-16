@@ -22,9 +22,6 @@
 					<td width="70%">&nbsp;</td>
 			</tr>
 			<tr>
-				<td><input type="text" hidden name="kode_brg" size="20" maxlength="10"></td>
-			</tr>
-			<tr>
 				<td height="36">&nbsp;</td>
 				<td>Nama Barang</td>
 				<td><input type="text" name="bp_nama" size="30"></td>
@@ -38,6 +35,11 @@
 				<td height="36">&nbsp;</td>
 				<td>Jenis Barang</td>
 				<td><input type="text" name="bp_jenis_barang" size="20"></td>
+			</tr>
+			<tr>
+				<td height="36">&nbsp;</td>
+				<td>Sumber Barang</td>
+				<td><input type="text" name="bp_sumber" size="30"></td>
 			</tr>
 			<tr>
 				<td height="36">&nbsp;</td>
@@ -82,7 +84,7 @@
 				<td height="36">&nbsp;</td>
 				<td>Kategori</td>
 				<td>
-				<select name="bp_id_kategori">
+				<select name="bp_kategori_id">
 					<option value="0">- Pilih Kategori -</option>
 					<?php 
 						while($result=mysqli_fetch_assoc($tampil_kategori)):
