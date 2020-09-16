@@ -2,9 +2,9 @@
 <?php
 include '../koneksi.php';
 // Cek Kode
-if (isset($_GET['kode_brg'])) {
-	$kode_brg = $_GET['kode_brg'];
-	$query   = "SELECT * FROM barang WHERE kode_brg='$kode_brg'";
+if (isset($_GET['bp_id'])) {
+	$bp_id = $_GET['bp_id'];
+	$query   = "SELECT * FROM barang_perlengkapan WHERE bp_id='$bp_id'";
 	$hasil   = mysqli_query($Open,$query);
 	$data    = mysqli_fetch_array($hasil);
 }
@@ -12,8 +12,8 @@ if (isset($_GET['kode_brg'])) {
 		die ("Error. Tidak ada Kode yang dipilih Silakan cek kembali! ");	
 	}
 	//proses delete data
-	if (!empty($kode_brg) && $kode_brg != "") {
-		$hapus = "DELETE FROM barang WHERE kode_brg='$kode_brg'";
+	if (!empty($bp_id) && $bp_id != "") {
+		$hapus = "DELETE FROM barang_perlengkapan WHERE bp_id='$bp_id'";
 		$sql = mysqli_query($Open,$hapus);
 		if ($sql) {		
 			?>
