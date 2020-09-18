@@ -100,6 +100,7 @@ if ($_SESSION['akses'] != "prodi") {
                                 <li><b>MAIN MENU</b></li><br>
                                 <li><a href="home_prodi.php?page=beranda" title="Beranda">&nbsp;Beranda</a></li>
                                 <li><a href="home_prodi.php?page=lihat-data-prodi" title="lihat data prodi">&nbsp;Master Data Prodi</a></li>
+                                <li><a href="home_prodi.php?page=lihat-data-pegawai" title="lihat data pegawai">&nbsp;Master Data Pegawai</a></li>
 
                             </ul>
                         </td>
@@ -129,8 +130,20 @@ if ($_SESSION['akses'] != "prodi") {
                                 case 'edit-data-prodi':
                                     include "edit-data-prodi.php";
                                     break;
-                                case 'delete-data-prodi':
-                                    include "delete-data-prodi.php";
+                                case 'lihat-data-pegawai':
+                                    include "lihat-data-pegawai.php";
+                                    break;
+                                case 'form-input-data-pegawai':
+                                    include "form-input-data-pegawai.php";
+                                    break;
+                                case 'input-data-pegawai':
+                                    include "input-data-pegawai.php";
+                                    break;
+                                case 'edit-data-pegawai':
+                                    include "edit-data-pegawai.php";
+                                    break;
+                                case 'delete-data-pegawai':
+                                    include "delete-data-pegawai.php";
                                     break;
                                 case 'export-stok-pdf':
                                     echo "<script language=\"JavaScript\">

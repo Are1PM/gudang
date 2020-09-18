@@ -7,9 +7,10 @@ if ($_POST['Submit'] == "Submit") {
 	$pegawai_nip_nid	= $_POST['pegawai_nip_nid'];
 	$pegawai_nama	= $_POST['pegawai_nama'];
 	$pegawai_jabatan	= $_POST['pegawai_jabatan'];
-	$id_prodi		= $_POST['id_prodi'];
+	$pegawai_no_hp	= $_POST['pegawai_no_hp'];
+	$pegawai_bagian_id		= $_POST['pegawai_bagian_id'];
 //validasi data jika user dan nama kosong
-	if (empty($_POST['pegawai_nip_nid'])|| empty($_POST['pegawai_nama'])|| empty($_POST['pegawai_jabatan'])|| empty($_POST['id_prodi'])) {
+	if (empty($_POST['pegawai_nip_nid'])|| empty($_POST['pegawai_nama'])|| empty($_POST['pegawai_jabatan'])|| empty($_POST['pegawai_no_hp']) || empty($_POST['pegawai_bagian_id'])) {
 ?>
 	<script language="JavaScript">
 		alert('Data Harap Dilengkapi');
@@ -33,7 +34,7 @@ if ($cek > 0) {
 <?php
 }
 //Masukan data ke Table Login
-$input	="INSERT INTO pegawai (pegawai_id,pegawai_nip_nid, pegawai_nama, pegawai_jabatan, id_prodi) VALUES (null,'$pegawai_nip_nid','$pegawai_nama','$pegawai_jabatan','$id_prodi')";
+$input	="INSERT INTO pegawai (pegawai_id,pegawai_nip_nid, pegawai_nama, pegawai_jabatan, pegawai_no_hp,pegawai_bagian_id) VALUES (null,'$pegawai_nip_nid','$pegawai_nama','$pegawai_jabatan','$pegawai_no_hp','$pegawai_bagian_id')";
 $query_input =mysqli_query($Open,$input);
 	if ($query_input) {
 	//Jika Sukses

@@ -10,12 +10,13 @@
                <th width="100">NIP/NID</td>&nbsp;
                <th width="150">Nama</td>&nbsp;
                <th width="70">Jabatan</td>&nbsp;
-               <th width="130">Prodi</td>&nbsp;
+               <th width="70">No HP</td>&nbsp;
+               <th width="130">Bagian</td>&nbsp;
                <th width="80">Action</td>&nbsp;
           </tr>
           <?php
 	include "../koneksi.php";
-	$Cari="SELECT * FROM pegawai pg, prodi p WHERE pg.prodi_id=p.pegawai_prodi_id ORDER BY pegawai_id";
+	$Cari="SELECT * FROM pegawai pg, bagian b WHERE pg.pegawai_bagian_id=b.bagian_id ORDER BY pegawai_id";
 	$Tampil = mysqli_query($Open,$Cari);
 	$nomer=0;
     while ($hasil = mysqli_fetch_array ($Tampil)) {
@@ -23,11 +24,13 @@
 			$pegawai_nip_nid    = stripslashes ($hasil['pegawai_nip_nid']);
 			$pegawai_nama	     = stripslashes($hasil['pegawai_nama']);
 			$pegawai_jabatan    = stripslashes($hasil['pegawai_jabatan']);
-			$prodi_nama	     = stripslashes($hasil['prodi_nama']);
+               $pegawai_no_hp    = stripslashes($hasil['pegawai_no_hp']);
+			$bagian_nama	     = stripslashes($hasil['bagian_nama']);
 		{
 	$nomer++;
 ?>
           <tr align="center" bgcolor="#DFE6EF">
+               <td>&nbsp;</td>
                <td>&nbsp;</td>
                <td>&nbsp;</td>
                <td>&nbsp;</td>
@@ -44,7 +47,9 @@
                </td>
                <td><?=$pegawai_jabatan?><div align="center"></div>
                </td>
-               <td><?=$prodi_nama?><div align="center"></div>
+               <td><?=$pegawai_no_hp?><div align="center"></div>
+               </td>
+               <td><?=$bagian_nama?><div align="center"></div>
                </td>
                <td bgcolor="#EEF2F7">
                     <div align="center"><a href="home_prodi.php?page=edit-data-pegawai&pegawai_id=<?=$pegawai_id?>">Edit</a>
@@ -52,6 +57,7 @@
                </td>
           </tr>
           <tr align="center" bgcolor="#DFE6EF">
+               <td>&nbsp;</td>
                <td>&nbsp;</td>
                <td>&nbsp;</td>
                <td>&nbsp;</td>

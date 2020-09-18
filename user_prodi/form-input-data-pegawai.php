@@ -1,6 +1,6 @@
 <?php 
 	include "../koneksi.php";
-	$q = "SELECT * FROM prodi ORDER BY id_prodi";
+	$q = "SELECT * FROM bagian ORDER BY bagian_id";
 	$tampil = mysqli_query($Open, $q);
 ?>
 <div style="border:1px solid rgb(238,238,238); padding:10px; overflow:auto; width:1110px; height:375px;">
@@ -39,13 +39,18 @@
 	</tr>
 	<tr>
 		<td height="36">&nbsp;</td>
-		<td></td>
-		<td><select name="id_prodi">
-		<option value="0">- Pilih Prodi -</option>
+		<td>No. HP</td>
+		<td><input type="text" name="pegawai_no_hp" size="20" maxlength="20"></td>
+	</tr>
+	<tr>
+		<td height="36">&nbsp;</td>
+		<td>Bagian</td>
+		<td><select name="pegawai_bagian_id">
+		<option value="0">- Pilih Bagian -</option>
 				<?php 
 					while($result = mysqli_fetch_assoc($tampil)){
 						?>
-							<option value="<?= $result['id_prodi'] ?>"><?= $result["pegawai_bagian_id"] ?></option>
+							<option value="<?= $result['bagian_id'] ?>"><?= $result["bagian_nama"] ?></option>
 						<?php
 					}
 				?>
