@@ -2,9 +2,9 @@
 <?php
 include '../koneksi.php';
 // Cek Kode
-if (isset($_GET['id_pegawai'])) {
-	$id_pegawai = $_GET['id_pegawai'];
-	$query   = "SELECT * FROM pegawai WHERE id_pegawai='$id_pegawai'";
+if (isset($_GET['pegawai_id'])) {
+	$pegawai_id = $_GET['pegawai_id'];
+	$query   = "SELECT * FROM pegawai WHERE pegawai_id='$pegawai_id'";
 	$hasil   = mysqli_query($Open,$query);
 	$data    = mysqli_fetch_array($hasil);
 }
@@ -12,14 +12,14 @@ if (isset($_GET['id_pegawai'])) {
 		die ("Error. Tidak ada Kode yang dipilih Silakan cek kembali! ");	
 	}
 	//proses delete data
-	if (!empty($id_pegawai) && $id_pegawai != "") {
-		$hapus = "DELETE FROM pegawai WHERE id_pegawai='$id_pegawai'";
+	if (!empty($pegawai_id) && $pegawai_id != "") {
+		$hapus = "DELETE FROM pegawai WHERE pegawai_id='$pegawai_id'";
 		$sql = mysqli_query($Open,$hapus);
 		if ($sql) {		
 			?>
 				<script language="JavaScript">
 				alert('Data Pegawai Berhasil dihapus');
-				document.location='home_perlengkapan.php?page=lihat-data-pegawai';
+				document.location='home_prodi.php?page=lihat-data-pegawai';
 				</script>
 			<?php		
 		} else {

@@ -4,16 +4,16 @@
 //cek button
 if ($_POST['Submit'] == "Submit") {
 //Kirimkan Variabel
-	$nip_nid	= $_POST['nip_nid'];
-	$nama_pegawai	= $_POST['nama_pegawai'];
-	$jabatan	= $_POST['jabatan'];
+	$pegawai_nip_nid	= $_POST['pegawai_nip_nid'];
+	$pegawai_nama	= $_POST['pegawai_nama'];
+	$pegawai_jabatan	= $_POST['pegawai_jabatan'];
 	$id_prodi		= $_POST['id_prodi'];
 //validasi data jika user dan nama kosong
-	if (empty($_POST['nip_nid'])|| empty($_POST['nama_pegawai'])|| empty($_POST['jabatan'])|| empty($_POST['id_prodi'])) {
+	if (empty($_POST['pegawai_nip_nid'])|| empty($_POST['pegawai_nama'])|| empty($_POST['pegawai_jabatan'])|| empty($_POST['id_prodi'])) {
 ?>
 	<script language="JavaScript">
 		alert('Data Harap Dilengkapi');
-		document.location='home_perlengkapan.php?page=form-input-data-pegawai';
+		document.location='home_prodi.php?page=form-input-data-pegawai';
 	</script>
 <?php
 	}
@@ -21,26 +21,26 @@ if ($_POST['Submit'] == "Submit") {
 	else {
 	include "../koneksi.php";
 //cek User di database
-$cek=mysqli_num_rows(mysqli_query($Open,"SELECT nip_nid FROM pegawai WHERE nip_nid='$nip_nid'"));
+$cek=mysqli_num_rows(mysqli_query($Open,"SELECT pegawai_nip_nid FROM pegawai WHERE pegawai_nip_nid='$pegawai_nip_nid'"));
 
 
 if ($cek > 0) {
 ?>
 		<script language="JavaScript">
 		alert('NIP/NID sudah dipakai !, silahkan diulang kembali');
-		document.location='home_perlengkapan.php?page=form-input-data-pegawai';
+		document.location='home_prodi.php?page=form-input-data-pegawai';
 		</script>
 <?php
 }
 //Masukan data ke Table Login
-$input	="INSERT INTO pegawai (id_pegawai,nip_nid, nama_pegawai, jabatan, id_prodi) VALUES (null,'$nip_nid','$nama_pegawai','$jabatan','$id_prodi')";
+$input	="INSERT INTO pegawai (pegawai_id,pegawai_nip_nid, pegawai_nama, pegawai_jabatan, id_prodi) VALUES (null,'$pegawai_nip_nid','$pegawai_nama','$pegawai_jabatan','$id_prodi')";
 $query_input =mysqli_query($Open,$input);
 	if ($query_input) {
 	//Jika Sukses
 ?>
 		<script language="JavaScript">
 		alert('Data User Berhasil diinput');
-		document.location='home_perlengkapan.php?page=lihat-data-pegawai';
+		document.location='home_prodi.php?page=lihat-data-pegawai';
 		</script>
 <?php
 	}

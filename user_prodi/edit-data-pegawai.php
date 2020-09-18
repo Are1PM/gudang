@@ -1,48 +1,48 @@
 <div style="border:1px solid rgb(238,238,238); padding:10px; overflow:auto; width:1114px; height:375px;">
      <?php
 include '../koneksi.php';
-if (isset($_GET['id_pegawai'])) {
-	$id_pegawai = $_GET['id_pegawai'];
+if (isset($_GET['pegawai_id'])) {
+	$pegawai_id = $_GET['pegawai_id'];
 } else {
 	die ("Error. No Kode Selected! ");	
 }
 
 //proses edit data satuan
 if (isset($_POST['Edit'])) {
-	$id_pegawai	= $_POST['hid_pegawai'];
-	$nip_nid = $_POST['nip_nid'];
-	$nama_pegawai	= $_POST['nama_pegawai'];
-	$jabatan	= $_POST['jabatan'];
+	$pegawai_id	= $_POST['hid_pegawai'];
+	$pegawai_nip_nid = $_POST['pegawai_nip_nid'];
+	$pegawai_nama	= $_POST['pegawai_nama'];
+	$pegawai_jabatan	= $_POST['pegawai_jabatan'];
 	$id_prodi	= $_POST['id_prodi'];
 	
 	//update data
-	$query = "UPDATE pegawai SET nip_nid='$nip_nid', nama_pegawai='$nama_pegawai', jabatan='$jabatan', id_prodi='$id_prodi' WHERE id_pegawai='$id_pegawai'";
+	$query = "UPDATE pegawai SET pegawai_nip_nid='$pegawai_nip_nid', pegawai_nama='$pegawai_nama', pegawai_jabatan='$pegawai_jabatan', id_prodi='$id_prodi' WHERE pegawai_id='$pegawai_id'";
 	$sql = mysqli_query ($Open,$query);
 	//setelah berhasil update
 	if ($sql) {
 		echo "<h3><font color=green><center><blink>Data Pegawai Berhasil diedit</blink></center></font></h3>
-			<input type='button' value='Back To View' onclick=location.href='home_perlengkapan.php?page=lihat-data-pegawai' title='kembali ke form lihat data Pegawai'><br><br>";	
+			<input type='button' value='Back To View' onclick=location.href='home_prodi.php?page=lihat-data-pegawai' title='kembali ke form lihat data Pegawai'><br><br>";	
 	} else {
 		echo "<h3><font color=red><center>Data pegawai gagal diedit</center></font></h3>";	
 	}
 }
 
 //Tampilkan data dari tabel satuan
-$query = "SELECT * FROM pegawai WHERE id_pegawai='$id_pegawai'";
+$query = "SELECT * FROM pegawai WHERE pegawai_id='$pegawai_id'";
 $sql = mysqli_query($Open,$query);
 $hasil = mysqli_fetch_array($sql);
 if(!$hasil){
      ?>
 	<script language="JavaScript">
 		alert('Data Pegawai Tidak Ditemukan');
-		document.location='home_perlengkapan.php?page=lihat-data-pegawai';
+		document.location='home_prodi.php?page=lihat-data-pegawai';
 	</script>
 <?php
 }
-$id_pegawai	= $hasil['id_pegawai'];
-$nip_nid = $hasil['nip_nid'];
-$nama_pegawai	= $hasil['nama_pegawai'];
-$jabatan	= $hasil['jabatan'];
+$pegawai_id	= $hasil['pegawai_id'];
+$pegawai_nip_nid = $hasil['pegawai_nip_nid'];
+$pegawai_nama	= $hasil['pegawai_nama'];
+$pegawai_jabatan	= $hasil['pegawai_jabatan'];
 $id_prodi	= $hasil['id_prodi'];
 
 $q = "SELECT * FROM prodi ORDER BY id_prodi";
@@ -65,22 +65,22 @@ $tampil = mysqli_query($Open, $q);
           <td width="18">&nbsp;</td>
           <td width="142" height="16"></td>
           <td width="550">
-                    <input type="hidden" name="hid_pegawai" value="<?=$id_pegawai?>"></td>
+                    <input type="hidden" name="hid_pegawai" value="<?=$pegawai_id?>"></td>
      </tr>
 	<tr>
 		<td width="20" height="36">&nbsp;</td>
 		<td width="165">NIP/NID</td>
-		<td><input type="text" name="nip_nid" size="25" maxlength="20" value="<?= $nip_nid ?>"></td>
+		<td><input type="text" name="pegawai_nip_nid" size="25" maxlength="20" value="<?= $pegawai_nip_nid ?>"></td>
 	</tr>
 	<tr>
 		<td width="20" height="36">&nbsp;</td>
 		<td width="165">Nama Pegawai</td>
-		<td><input type="text" name="nama_pegawai" size="25" maxlength="20" value="<?= $nama_pegawai ?>"></td>
+		<td><input type="text" name="pegawai_nama" size="25" maxlength="20" value="<?= $pegawai_nama ?>"></td>
 	</tr>
 	<tr>
 		<td height="36">&nbsp;</td>
-		<td>jabatan</td>
-		<td><input type="text" name="jabatan" size="20" maxlength="20" value="<?= $jabatan ?>"></td>
+		<td>pegawai_jabatan</td>
+		<td><input type="text" name="pegawai_jabatan" size="20" maxlength="20" value="<?= $pegawai_jabatan ?>"></td>
 	</tr>
 	<tr>
 		<td height="36">&nbsp;</td>
@@ -90,7 +90,7 @@ $tampil = mysqli_query($Open, $q);
 				<?php 
 					while($result = mysqli_fetch_assoc($tampil)){
 						?>
-							<option value="<?= $result['id_prodi'] ?>" <?= ($result['id_prodi'] == $id_prodi )?"selected":""; ?>><?= $result["nama_prodi"] ?></option>
+							<option value="<?= $result['id_prodi'] ?>" <?= ($result['id_prodi'] == $id_prodi )?"selected":""; ?>><?= $result["pegawai_bagian_id"] ?></option>
 						<?php
 					}
 				?>
@@ -106,7 +106,7 @@ $tampil = mysqli_query($Open, $q);
 		<td>&nbsp;</td>
 		<td><input type="submit" name="Edit" value="Edit Data">&nbsp;&nbsp;&nbsp;
           <input type="button" value="Cancel"
-                              onclick=location.href="home_perlengkapan.php?page=lihat-data-pegawai"
+                              onclick=location.href="home_prodi.php?page=lihat-data-pegawai"
                               title="kembali ke lihat data Pegawai"></td>
 		</tr>
 	<tr>

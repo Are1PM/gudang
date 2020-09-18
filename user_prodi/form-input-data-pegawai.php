@@ -4,7 +4,7 @@
 	$tampil = mysqli_query($Open, $q);
 ?>
 <div style="border:1px solid rgb(238,238,238); padding:10px; overflow:auto; width:1110px; height:375px;">
-<form action="home_perlengkapan.php?page=input-data-pegawai" method="POST" name="form-input-data-pegawai">
+<form action="home_prodi.php?page=input-data-pegawai" method="POST" name="form-input-data-pegawai">
 <table width="1100" border="0" align="center" cellpadding="0" cellspacing="0">
 	<tr>
 		<td>&nbsp;</td>
@@ -25,17 +25,17 @@
 	<tr>
 		<td width="20" height="36">&nbsp;</td>
 		<td width="165">NIP/NID</td>
-		<td><input type="text" name="nip_nid" size="25" maxlength="20"></td>
+		<td><input type="text" name="pegawai_nip_nid" size="25" maxlength="20"></td>
 	</tr>
 	<tr>
 		<td height="36">&nbsp;</td>
 		<td>Nama Pegawai</td>
-		<td><input type="text" name="nama_pegawai" size="50" maxlength="20"></td>
+		<td><input type="text" name="pegawai_nama" size="50" maxlength="20"></td>
 	</tr>
 	<tr>
 		<td height="36">&nbsp;</td>
 		<td>Jabatan</td>
-		<td><input type="text" name="jabatan" size="20" maxlength="20"></td>
+		<td><input type="text" name="pegawai_jabatan" size="20" maxlength="20"></td>
 	</tr>
 	<tr>
 		<td height="36">&nbsp;</td>
@@ -45,7 +45,7 @@
 				<?php 
 					while($result = mysqli_fetch_assoc($tampil)){
 						?>
-							<option value="<?= $result['id_prodi'] ?>"><?= $result["nama_prodi"] ?></option>
+							<option value="<?= $result['id_prodi'] ?>"><?= $result["pegawai_bagian_id"] ?></option>
 						<?php
 					}
 				?>
