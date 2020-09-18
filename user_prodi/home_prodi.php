@@ -99,8 +99,7 @@ if ($_SESSION['akses'] != "prodi") {
                             <ul class="navbar">
                                 <li><b>MAIN MENU</b></li><br>
                                 <li><a href="home_prodi.php?page=beranda" title="Beranda">&nbsp;Beranda</a></li>
-                                <li><a href="home_prodi.php?page=lihat-data-user-prodi" title="lihat data user prodi">&nbsp;Master User Prodi</a></li>
-                                <li><a href="home_prodi.php?page=lihat-data-stok-barang" title="Data Stok Barang">&nbsp;Data Stok Barang</a></li>
+                                <li><a href="home_prodi.php?page=lihat-data-prodi" title="lihat data prodi">&nbsp;Master Data Prodi</a></li>
 
                             </ul>
                         </td>
@@ -118,35 +117,20 @@ if ($_SESSION['akses'] != "prodi") {
                                 case 'beranda':
                                     include 'beranda.php';
                                     break;
-                                case 'lihat-data-user-prodi':
-                                    include "lihat-data-user-prodi.php";
+                                case 'lihat-data-prodi':
+                                    include "lihat-data-prodi.php";
                                     break;
-                                case 'form-input-data-user-prodi':
-                                    include "form-input-data-user-prodi.php";
+                                case 'form-input-data-prodi':
+                                    include "form-input-data-prodi.php";
                                     break;
-                                case 'input-data-user-prodi':
-                                    include "input-data-user-prodi.php";
+                                case 'input-data-prodi':
+                                    include "input-data-prodi.php";
                                     break;
-                                case 'edit-data-user-prodi':
-                                    include "edit-data-user-prodi.php";
+                                case 'edit-data-prodi':
+                                    include "edit-data-prodi.php";
                                     break;
-                                case 'delete-data-user-prodi':
-                                    include "delete-data-user-prodi.php";
-                                    break;
-                                case 'delete-data-stok-barang':
-                                    include "delete-stok-barang.php";
-                                    break;
-                                case 'edit-data-stok-barang':
-                                    include "edit-stok-barang.php";
-                                    break;
-                                case 'form-input-stok-barang':
-                                    include "form-input-stok-barang.php";
-                                    break;
-                                case 'input-data-stok-barang':
-                                    include "input-stok-barang.php";
-                                    break;
-                                case 'lihat-data-stok-barang':
-                                    include "lihat-stok-barang.php";
+                                case 'delete-data-prodi':
+                                    include "delete-data-prodi.php";
                                     break;
                                 case 'export-stok-pdf':
                                     echo "<script language=\"JavaScript\">
