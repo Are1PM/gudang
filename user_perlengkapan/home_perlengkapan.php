@@ -101,7 +101,7 @@ if ($_SESSION['akses'] != "perlengkapan") {
 								<li><a href="home_perlengkapan.php?page=lihat-data-barang" title="Master data barang">&nbsp;Master Barang Perlengkapan</a></li>
 								<li><a href="home_perlengkapan.php?page=lihat-data-kategori" title="Master data kategori">&nbsp;Master Kategori</a></li>
 								
-								<li><a href="home_perlengkapan.php?page=lihat-data-ruangan" title="Master data ruangan">&nbsp;Master Ruangan</a></li>
+								<li><a href="home_perlengkapan.php?page=lihat-data-bagian" title="Master data bagian">&nbsp;Master Bagian</a></li>
 								<li><a href="home_perlengkapan.php?page=lihat-data-prodi" title="Master data prodi">&nbsp;Master Prodi</a></li>
 								<li><a href="home_perlengkapan.php?page=lihat-data-ambil-barang" title="Master data ambil barang">&nbsp;Data Ambil Barang</a></li>
 								<li><a href="home_perlengkapan.php?page=lihat-data-tempat-barang" title="Master data tempat barang">&nbsp;Master Tempat Barang</a></li>
@@ -132,8 +132,8 @@ if ($_SESSION['akses'] != "perlengkapan") {
 								case 'lihat-data-kategori':
 									include "lihat-data-kategori.php";
 									break;
-								case 'lihat-data-ruangan':
-									include "lihat-data-ruangan.php";
+								case 'lihat-data-bagian':
+									include "lihat-data-bagian.php";
 									break;
 								case 'lihat-data-prodi':
 									include "lihat-data-prodi.php";
@@ -159,8 +159,8 @@ if ($_SESSION['akses'] != "perlengkapan") {
 								case 'form-input-stok-barang':
 									include "form-input-stok-barang.php";
 									break;
-								case 'form-input-data-ruangan':
-									include "form-input-data-ruangan.php";
+								case 'form-input-data-bagian':
+									include "form-input-data-bagian.php";
 									break;
 								case 'form-input-data-prodi':
 									include "form-input-data-prodi.php";
@@ -189,8 +189,8 @@ if ($_SESSION['akses'] != "perlengkapan") {
 								case 'delete-stok-barang':
 									include "delete-data-barang.php";
 									break;
-								case 'delete-data-ruangan':
-									include "delete-data-ruangan.php";
+								case 'delete-data-bagian':
+									include "delete-data-bagian.php";
 									break;
 								case 'delete-data-prodi':
 									include "delete-data-prodi.php";
@@ -219,8 +219,8 @@ if ($_SESSION['akses'] != "perlengkapan") {
 								case 'edit-data-ambil-barang':
 									include "edit-data-ambil-barang.php";
 									break;
-								case 'edit-data-ruangan':
-									include "edit-data-ruangan.php";
+								case 'edit-data-bagian':
+									include "edit-data-bagian.php";
 									break;
 								case 'edit-data-prodi':
 									include "edit-data-prodi.php";
@@ -249,8 +249,8 @@ if ($_SESSION['akses'] != "perlengkapan") {
 								case 'input-data-user-prodi':
 									include "input-data-user-prodi.php";
 									break;
-								case 'input-data-ruangan':
-									include "input-data-ruangan.php";
+								case 'input-data-bagian':
+									include "input-data-bagian.php";
 									break;
 								case 'input-data-prodi':
 									include "input-data-prodi.php";
