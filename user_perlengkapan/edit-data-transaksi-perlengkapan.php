@@ -57,7 +57,7 @@
 				<td height="36">&nbsp;</td>
 				<td>&nbsp;</td>
 				<td>
-					<font size="3"><b>FORM EDIT DATA AMBIL BARANG</b></font>
+					<font size="3"><b>FORM EDIT DATA TRANSAKSI PERLENGKAPAN</b></font>
 				</td>
 			</tr>
 
