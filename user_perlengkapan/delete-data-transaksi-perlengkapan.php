@@ -2,29 +2,29 @@
 <?php
 include '../koneksi.php';
 // Cek Kode
-if (isset($_GET['id_ambil_brg'])) {
-    $id_ambil_brg = $_GET['id_ambil_brg'];
-    $query   = "SELECT * FROM ambil_barang WHERE id_ambil_brg='$id_ambil_brg'";
+if (isset($_GET['tp_id'])) {
+    $tp_id = $_GET['tp_id'];
+    $query   = "SELECT * FROM transaksi_perlengkapan WHERE tp_id='$tp_id'";
     $hasil   = mysqli_query($Open, $query);
     $data    = mysqli_fetch_array($hasil);
 } else {
-    die("Error. Tidak ada Kode yang dipilih Silakan cek kembali! ");
+    die("Error. Tidak ada data yang dipilih Silakan cek kembali! ");
 }
-    //proses delete data
-    if (!empty($id_ambil_brg) && $id_ambil_brg != "") {
-        $hapus = "DELETE FROM ambil_barang WHERE id_ambil_brg='$id_ambil_brg'";
-        $sql = mysqli_query($Open, $hapus);
-        if ($sql) {
-            ?>
-				<script language="JavaScript">
-				alert('Data Ambil Barang Berhasil dihapus');
-				document.location='home_perlengkapan.php?page=lihat-data-ambil-barang';
-				</script>
-			<?php
-        } else {
-            echo "<h2><font color=red><center>Data ambil barang gagal dihapus</center></font></h2>";
-        }
+//proses delete data
+if (!empty($tp_id) && $tp_id != "") {
+    $hapus = "DELETE FROM transaksi_perlengkapan WHERE tp_id='$tp_id'";
+    $sql = mysqli_query($Open, $hapus);
+    if ($sql) {
+?>
+        <script language="JavaScript">
+            alert('Data Transaksi Perlengkapan Berhasil dihapus');
+            document.location = 'home_perlengkapan.php?page=lihat-data-transaksi-perlengkapan';
+        </script>
+<?php
+    } else {
+        echo "<h2><font color=red><center>Data transaksi perlengkapan gagal dihapus</center></font></h2>";
     }
+}
 //Tutup koneksi engine mysqli
-    mysqli_close($Open);
+mysqli_close($Open);
 ?>
