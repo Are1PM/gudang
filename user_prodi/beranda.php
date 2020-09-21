@@ -39,12 +39,12 @@
     <?php
     include "../koneksi.php";
 
-    $q = "SELECT nama_brg, jumlah_masuk FROM `barang`";
+    $q = "SELECT brg_prodi_nama, brg_prodi_stok FROM `barang_prodi`";
     $ambil = mysqli_query($Open, $q);
 
     while ($hasil = mysqli_fetch_array($ambil)) {
-        $brg[] = $hasil['nama_brg'];
-        $jumlah[] = $hasil['jumlah_masuk'];
+        $brg[] = $hasil['brg_prodi_nama'];
+        $jumlah[] = $hasil['brg_prodi_stok'];
     }
 
 
