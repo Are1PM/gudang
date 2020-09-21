@@ -5,8 +5,8 @@ if (!isset($_SESSION['username'])) {
 	die("Anda belum login"); //jika belum login jangan lanjut
 }
 //cek level user
-if ($_SESSION['akses'] != "pegawai") {
-	die("Anda bukan pegawai"); //jika bukan admin jangan lanjut
+if ($_SESSION['akses'] != "bagian") {
+	die("Anda bukan user bagian"); //jika bukan admin jangan lanjut
 }
 ?>
 <html>
