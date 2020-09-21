@@ -115,8 +115,8 @@ if ($_SESSION['akses'] != "bagian") {
 								case 'beranda':
 									include "beranda.php";
 									break;
-								case 'lihat-data-pegawai':
-									include "lihat-data-pegawai.php";
+								case 'lihat-data-bagian':
+									include "lihat-data-bagian.php";
 									break;
 								case 'lihat-data-prodi':
 									include "lihat-data-prodi.php";

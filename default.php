@@ -32,6 +32,7 @@
 											<option value="perlengkapan">Perlengkapan</options>
 											<option value="prodi">Prodi</option>
 											<option value="pegawai">Pegawai</option>
+											<option value="bagian">Bagian</option>
 										</select><br /><br />
 										<input style="float:right" type="submit" value="LOGIN" /><br /></td>
 								</tr>
