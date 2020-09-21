@@ -95,10 +95,10 @@ if ($_SESSION['akses'] != "bagian") {
 						<td valign="top">
 							<ul class="navbar">
 								<li><b>MAIN MENU</b></li><br>
-								<li><a href="home_pegawai.php?page=beranda" title="Beranda">&nbsp;Beranda</a></li>
-								<li><a href="home_pegawai.php?page=lihat-data-pegawai" title="lihat-data-pegawai">&nbsp;Data Pegawai</a></li>
-								<li><a href="home_pegawai.php?page=lihat-data-prodi" title="lihat-data-prodi">&nbsp;Data Prodi</a></li>
-								<li><a href="home_pegawai.php?page=lihat-data-barang-prodi" title="lihat-data-barang-prodi">&nbsp;Data Barang Prodi</a></li>
+								<li><a href="home_bagian.php?page=beranda" title="Beranda">&nbsp;Beranda</a></li>
+								<li><a href="home_bagian.php?page=lihat-data-bagian" title="lihat-data-bagian">&nbsp;Data Bagian</a></li>
+								<li><a href="home_bagian.php?page=lihat-data-pegawai" title="lihat-data-pegawai">&nbsp;Data Pegawai</a></li>
+								<li><a href="home_bagian.php?page=lihat-data-barang-perlengkapan" title="lihat-data-barang-perlengkapan">&nbsp;Data Barang Perlengkapan</a></li>
 							</ul>
 						</td>
 					</tr>
@@ -112,17 +112,14 @@ if ($_SESSION['akses'] != "bagian") {
 							<?php
 							$page = (isset($_GET['page'])) ? $_GET['page'] : "main";
 							switch ($page) {
-								case 'beranda':
-									include "beranda.php";
-									break;
 								case 'lihat-data-bagian':
 									include "lihat-data-bagian.php";
 									break;
-								case 'lihat-data-prodi':
-									include "lihat-data-prodi.php";
+								case 'lihat-data-pegawai':
+									include "lihat-data-pegawai.php";
 									break;
-								case 'lihat-data-barang-prodi':
-									include "lihat-data-barang-prodi.php";
+								case 'lihat-data-barang-perlengkapan':
+									include "lihat-data-barang-perlengkapan.php";
 									break;
 								case 'main':
 								default:

@@ -112,9 +112,6 @@ if ($_SESSION['akses'] != "pegawai") {
 							<?php
 							$page = (isset($_GET['page'])) ? $_GET['page'] : "main";
 							switch ($page) {
-								case 'beranda':
-									include "beranda.php";
-									break;
 								case 'lihat-data-pegawai':
 									include "lihat-data-pegawai.php";
 									break;

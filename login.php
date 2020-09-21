@@ -31,7 +31,7 @@ if ($op == "in") {
         } else if ($akses == "pegawai") {
             header("location:pegawai/home_pegawai.php");
         } else if ($akses == "bagian") {
-            header("location:bagian/home_bagian.php");
+            header("location:user_bagian/home_bagian.php");
         }
     } else {
     ?>
