@@ -19,7 +19,7 @@ $pdf->setPrintFooter(false);
 // $pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
 
 // set margins
-$pdf->SetMargins(4, 4, 4);
+$pdf->SetMargins(30, 4, 2);
 
 // set auto page breaks
 // $pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
@@ -46,70 +46,41 @@ $pdf->AddPage();
 include "../koneksi.php";
 // <th width="16%" align="center">Image</th>
 $html = '
-     <h1 align="center">Daftar Barang</h1>
-     <div style:"align-items: center;">
+     <h1 align="center">Daftar Transaksi Perlengkapan</h1>
      <table width="100%" border="1">
           <tr>
-               <th width="4%" align="center">No</th>
-               <th width="15%"align="center">Kode Barang</th>
-               <th width="15%" align="center">Nama Barang</th>
-               <th width="15%" align="center">Jenis Barang</th>
-               <th width="15%" align="center">Jumlah Barang</th>
-               <th width="15%" align="center">Sisa Barang</th>
+               <th width="5%" align="center">No</th>
+               <th width="20%" align="center">Tanggal Transaksi</th>
+               <th width="20%" align="center">Jumlah Transaksi</th>
+               <th width="10%" align="center">Bagian</th>
           </tr>
      
      ';
-$Cari = "SELECT * FROM barang b INNER JOIN satuan s ON s.id_satuan=b.id_satuan INNER JOIN kategori k ON k.id_kategori=b.id_kategori ORDER BY kode_brg";
+$Cari = "SELECT * FROM transaksi_perlengkapan tp INNER JOIN bagian b ON b.bagian_id=tp.tp_bagian_id ORDER BY tp_id";
 $Tampil = mysqli_query($Open, $Cari);
 $nomer = 0;
 while ($hasil = mysqli_fetch_array($Tampil)) {
-     $kode_brg     = stripslashes($hasil['kode_brg']);
-     $nama_brg     = stripslashes($hasil['nama_brg']);
-     $jenis_brg     = stripslashes($hasil['jenis_brg']);
 
-     $q = "SELECT  sum(jumlah_ambil) as total FROM ambil_barang WHERE kode_brg='$kode_brg'";
-     $hitung = mysqli_query($Open, $q);
+     $tp_tgl_transaksi     = stripslashes($hasil['tp_tgl_transaksi']);
+     $tp_jumlah     = stripslashes($hasil['tp_jumlah']);
+     $bagian_nama     = stripslashes($hasil['bagian_nama']);
+     $nomer++;
 
-     $total = mysqli_fetch_assoc($hitung);
-     $stok_barang     = stripslashes($hasil['jumlah_masuk']);
-     $sisa_barang     = stripslashes($hasil['jumlah_masuk']) - $total['total']; {
-          $nomer++;
-
-          $html .= "
+     $html .= "
           <tr align=\"center\" >
-          <td height=\"32\" >$nomer</td>
+          <td height=\"20\" >$nomer</td>
           ";
-          // $html .="
-
-          //           <td>
-          //      ";
-
-          //      if (empty($image)){
-          //      $html .='
-          //           <img src="../assets/img/no-img.png" width="100" height="110"><br>No Image
-          //           ';
-          //      }else{
-          //      $html .="
-          //           <img class=\"shadow\" src=\"../assets/img/$image\" width=\"100\" height=\"110\" title=\"$image\">
-          //      ";
-          //      }
-          // $html .= "</td>";
-          $html .= "
-          <td>$kode_brg
-          </td>
-          <td>$nama_brg
-          </td>
-          <td>$jenis_brg</td>
-          <td>$stok_barang</td>
-          <td>$sisa_barang</td>
+     $html .= "
+          <td>$tp_tgl_transaksi</td>
+          <td>$tp_jumlah</td>
+          <td>$bagian_nama</td>
      </tr>
      ";
-     }
 }
 //Tutup koneksi engine MySQL
 mysqli_close($Open);
 
-$html .= '</table></div>';
+$html .= '</table>';
 
 // print a block of text using Write()
 $pdf->WriteHTML($html, true, false, true, false, '');

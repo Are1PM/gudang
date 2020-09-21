@@ -46,7 +46,7 @@ $pdf->AddPage();
 include "../koneksi.php";
 // <th width="16%" align="center">Image</th>
 $html = '
-     <h1 align="center">Daftar Barang</h1>
+     <h1 align="center">Daftar Barang Perlengkapan</h1>
      <table width="100%" border="1">
           <tr>
                <th width="4%" align="center">No</th>

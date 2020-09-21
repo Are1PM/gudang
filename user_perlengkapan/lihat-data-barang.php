@@ -1,8 +1,9 @@
 <div style="border:1px solid rgb(238,238,238); padding:10px; overflow:auto; width:1114px; height:375px;">
      <h2 align="center">
-          <font color="orange" size="4" face="arial"><b>Data Barang</b></font>
+          <font color="orange" size="4" face="arial"><b>Data Barang Perlengkapan</b></font>
      </h2><br>
-     <input type="button" value="Export To PDF" title="Save as PDF Format" onclick="window.open('home_perlengkapan.php?page=export-pdf','_blank');"> <input type="button" value="Tambah" title="Tambah data barang" onclick="window.open('home_perlengkapan.php?page=form-input-master-barang','_self');"><br><br>
+     <input type="button" value="Export To PDF" title="Save as PDF Format" onclick="window.open('home_perlengkapan.php?page=export-bp-pdf','_blank');">
+     <input type="button" value="Tambah" title="Tambah data barang" onclick="window.open('home_perlengkapan.php?page=form-input-master-barang','_self');"><br><br>
      <table width="1100" border="0" align="center" cellpadding="0" cellspacing="0">
           <tr bgcolor="#FF6600">
                <th width="5">No</td>&nbsp;
@@ -76,9 +77,9 @@
                          </td>
                          <td><?= $bp_jenis_barang ?><div align="center"></div>
                          </td>
-                         <td><?= date("d-m-Y",strtotime($bp_tgl_masuk)) ?><div align="center"></div>
+                         <td><?= date("d-m-Y", strtotime($bp_tgl_masuk)) ?><div align="center"></div>
                          </td>
-                         <td><?= date("d-m-Y",strtotime($bp_tgl_keluar)) ?><div align="center"></div>
+                         <td><?= date("d-m-Y", strtotime($bp_tgl_keluar)) ?><div align="center"></div>
                          </td>
                          <td><?= $bp_thn_perolehan ?><div align="center"></div>
                          </td>

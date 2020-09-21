@@ -178,9 +178,14 @@ if ($_SESSION['akses'] != "perlengkapan") {
 								case 'input-data-kategori':
 									include "input-data-kategori.php";
 									break;
-								case 'export-pdf':
+								case 'export-bp-pdf':
 									echo "<script language=\"JavaScript\">
-									document.location='export.php?file=pdf';
+									document.location='export.php?file=bp-pdf';
+									</script>";
+									break;
+								case 'export-tp-pdf':
+									echo "<script language=\"JavaScript\">
+									document.location='export.php?file=tp-pdf';
 									</script>";
 									break;
 								case 'main':
