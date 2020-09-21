@@ -165,9 +165,9 @@ if ($_SESSION['akses'] != "prodi") {
                                 case 'delete-data-barang-prodi':
                                     include "delete-data-barang-prodi.php";
                                     break;
-                                case 'export-stok-pdf':
+                                case 'export-bprodi-pdf':
                                     echo "<script language=\"JavaScript\">
-                                    document.location='export.php?file=stok-pdf';
+                                    document.location='export.php?file=bprodi-pdf';
                                     </script>";
                                     break;
                                 case 'main':
