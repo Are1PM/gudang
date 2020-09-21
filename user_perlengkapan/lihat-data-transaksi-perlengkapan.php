@@ -1,6 +1,6 @@
 <div style="border:1px solid rgb(238,238,238); padding:10px; overflow:auto; width:1114px; height:375px;">
      <h2 align="center">
-          <font color="orange" size="4" face="arial"><b>Data Ambil Barang</b></font>
+          <font color="orange" size="4" face="arial"><b>Data Transaksi Perlengkapan</b></font>
      </h2><br>
      <input type="button" value="Export To PDF" title="Save as PDF Format" onclick="window.open('home_perlengkapan.php?page=export-tp-pdf','_blank');">
      <input type="button" value="Tambah" title="Tambah data transaksi perlengkapan" onclick=window.open('home_perlengkapan.php?page=form-input-transaksi-perlengkapan','_self');><br><br>
