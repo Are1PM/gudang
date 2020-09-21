@@ -100,6 +100,7 @@ if ($_SESSION['akses'] != "prodi") {
                                 <li><b>MAIN MENU</b></li><br>
                                 <li><a href="home_prodi.php?page=beranda" title="Beranda">&nbsp;Beranda</a></li>
                                 <li><a href="home_prodi.php?page=lihat-data-barang-prodi" title="lihat data barang prodi">&nbsp;Master Data Barang Prodi</a></li>
+                                <li><a href="home_prodi.php?page=lihat-data-transaksi-prodi" title="lihat data transaksi prodi">&nbsp;Master Data Transaksi Prodi</a></li>
                                 <li><a href="home_prodi.php?page=lihat-data-prodi" title="lihat data prodi">&nbsp;Master Data Prodi</a></li>
                                 <li><a href="home_prodi.php?page=lihat-data-pegawai" title="lihat data pegawai">&nbsp;Master Data Pegawai</a></li>
 
@@ -165,10 +166,31 @@ if ($_SESSION['akses'] != "prodi") {
                                 case 'delete-data-barang-prodi':
                                     include "delete-data-barang-prodi.php";
                                     break;
+                                    // barang prodi
+                                case 'lihat-data-transaksi-prodi':
+                                    include "lihat-data-transaksi-prodi.php";
+                                    break;
+                                case 'form-input-transaksi-prodi':
+                                    include "form-input-transaksi-prodi.php";
+                                    break;
+                                case 'input-data-transaksi-prodi':
+                                    include "input-data-transaksi-prodi.php";
+                                    break;
+                                case 'edit-data-transaksi-prodi':
+                                    include "edit-data-transaksi-prodi.php";
+                                    break;
+                                case 'delete-data-transaksi-prodi':
+                                    include "delete-data-transaksi-prodi.php";
+                                    break;
                                 case 'export-bprodi-pdf':
                                     echo "<script language=\"JavaScript\">
                                     document.location='export.php?file=bprodi-pdf';
                                     </script>";
+                                    break;
+                                case 'export-tp-pdf':
+                                    echo "<script language=\"JavaScript\">
+                                        document.location='export.php?file=tp-pdf';
+                                        </script>";
                                     break;
                                 case 'main':
                                 default:
