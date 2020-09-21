@@ -3,19 +3,19 @@
           <font color="orange" size="4" face="arial"><b>Data Barang Perlengkapan</b></font>
      </h2><br>
      <input type="button" value="Export To PDF" title="Save as PDF Format" onclick="window.open('home_prodi.php?page=export-bprodi-pdf','_blank');">
-     <input type="button" value="Tambah" title="Tambah data barang" onclick="window.open('home_prodi.php?page=form-input-master-barang','_self');"><br><br>
-     <table width="1100" border="0" align="center" cellpadding="0" cellspacing="0">
-          <tr bgcolor="#FF6600">
-               <th width="5">No</td>&nbsp;
-               <th width="170">Nama Barang</td>&nbsp;
-               <th width="170">Jumlah Barang</td>&nbsp;
-               <th width="80">Stok Barang</td>&nbsp;
-               <th width="60">Tanggal Masuk</td>&nbsp;
-               <th width="60">Tanggal Keluar</td>&nbsp;
-               <th width="60">Jumlah Masuk</td>&nbsp;
-               <th width="60">Jumlah Keluar</td>&nbsp;
-               <th width="60">Prodi</td>&nbsp;
-               <th width="80">Action</td>&nbsp;
+     <input type="button" value="Tambah" title="Tambah data barang" onclick="window.open('home_prodi.php?page=form-input-data-barang-prodi','_self');"><br><br>
+     <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+          <tr bgcolor="#FF6600" height="25px">
+               <th width="5%">No</td>&nbsp;
+               <th width="15%">Nama Barang</td>&nbsp;
+               <th width="10%">Jumlah Barang</td>&nbsp;
+               <th width="10%">Stok Barang</td>&nbsp;
+               <th width="10%">Tanggal Masuk</td>&nbsp;
+               <th width="10%">Tanggal Keluar</td>&nbsp;
+               <th width="10%">Jumlah Masuk</td>&nbsp;
+               <th width="10%">Jumlah Keluar</td>&nbsp;
+               <th width="10%">Prodi</td>&nbsp;
+               <th width="10%">Action</td>&nbsp;
           </tr>
           <?php
           include "../koneksi.php";
@@ -67,8 +67,8 @@
                          <td><?= $prodi_nama ?><div align="center"></div>
                          </td>
                          <td bgcolor="#EEF2F7">
-                              <div align="center"><a href="home_prodi.php?page=edit-data-barang&brg_prodi_id=<?= $brg_prodi_id ?>">Edit</a>
-                                   | <a href="home_prodi.php?page=delete-data-barang&brg_prodi_id=<?= $brg_prodi_id ?>">Delete</a></div>
+                              <div align="center"><a href="home_prodi.php?page=edit-data-barang-prodi&brg_prodi_id=<?= $brg_prodi_id ?>">Edit</a>
+                                   | <a href="home_prodi.php?page=delete-data-barang-prodi&brg_prodi_id=<?= $brg_prodi_id ?>">Delete</a></div>
                          </td>
                     </tr>
                     <tr align="center" bgcolor="#DFE6EF">

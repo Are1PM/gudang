@@ -19,7 +19,7 @@ $pdf->setPrintFooter(false);
 // $pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
 
 // set margins
-$pdf->SetMargins(4, 4, 4);
+$pdf->SetMargins(20, 4, 2);
 
 // set auto page breaks
 // $pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
@@ -46,62 +46,50 @@ $pdf->AddPage();
 include "../koneksi.php";
 // <th width="16%" align="center">Image</th>
 $html = '
-     <h1 align="center">Daftar Barang</h1>
-     <div style:"align-items: center;">
+     <h1 align="center">Daftar Barang Prodi</h1>
      <table width="100%" border="1">
           <tr>
                <th width="4%" align="center">No</th>
-               <th width="15%"align="center">Kode Barang</th>
-               <th width="15%" align="center">Nama Barang</th>
-               <th width="15%" align="center">Jenis Barang</th>
-               <th width="15%" align="center">Jumlah Barang</th>
-               <th width="15%" align="center">Sisa Barang</th>
+               <th width="20%" align="center">Nama Barang</th>
+               <th width="7%" align="center">Jumlah Barang</th>
+               <th width="7%" align="center">Stok Barang</th>
+               <th width="15%" align="center">Tanggal Masuk</th>
+               <th width="15%" align="center">Tanggal Keluar</th>
+               <th width="8%" align="center">Jumlah Masuk</th>
+               <th width="8%" align="center">Jumlah Keluar</th>
+               <th width="7%" align="center">Prodi</th>
           </tr>
      
      ';
-$Cari = "SELECT * FROM barang b INNER JOIN satuan s ON s.id_satuan=b.id_satuan INNER JOIN kategori k ON k.id_kategori=b.id_kategori ORDER BY kode_brg";
+$Cari = "SELECT * FROM barang_prodi bp INNER JOIN prodi p ON p.prodi_id=bp.brg_prodi_prodi_id ORDER BY brg_prodi_id";
 $Tampil = mysqli_query($Open, $Cari);
 $nomer = 0;
 while ($hasil = mysqli_fetch_array($Tampil)) {
-     $kode_brg     = stripslashes($hasil['kode_brg']);
-     $nama_brg     = stripslashes($hasil['nama_brg']);
-     $jenis_brg     = stripslashes($hasil['jenis_brg']);
 
-     $q = "SELECT  sum(jumlah_ambil) as total FROM ambil_barang WHERE kode_brg='$kode_brg'";
-     $hitung = mysqli_query($Open, $q);
-
-     $total = mysqli_fetch_assoc($hitung);
-     $stok_barang     = stripslashes($hasil['jumlah_masuk']);
-     $sisa_barang     = stripslashes($hasil['jumlah_masuk']) - $total['total']; {
+     $brg_prodi_nama     = stripslashes($hasil['brg_prodi_nama']);
+     $brg_prodi_jumlah     = stripslashes($hasil['brg_prodi_jumlah']);
+     $brg_prodi_stok     = stripslashes($hasil['brg_prodi_stok']);
+     $brg_prodi_tgl_masuk     = stripslashes($hasil['brg_prodi_tgl_masuk']);
+     $brg_prodi_tgl_keluar     = stripslashes($hasil['brg_prodi_tgl_keluar']);
+     $brg_prodi_jml_masuk     = stripslashes($hasil['brg_prodi_jml_masuk']);
+     $brg_prodi_jml_keluar     = stripslashes($hasil['brg_prodi_jml_keluar']);
+     $prodi_nama     = stripslashes($hasil['prodi_nama']); {
           $nomer++;
 
           $html .= "
           <tr align=\"center\" >
           <td height=\"32\" >$nomer</td>
           ";
-          // $html .="
-
-          //           <td>
-          //      ";
-
-          //      if (empty($image)){
-          //      $html .='
-          //           <img src="../assets/img/no-img.png" width="100" height="110"><br>No Image
-          //           ';
-          //      }else{
-          //      $html .="
-          //           <img class=\"shadow\" src=\"../assets/img/$image\" width=\"100\" height=\"110\" title=\"$image\">
-          //      ";
-          //      }
-          // $html .= "</td>";
           $html .= "
-          <td>$kode_brg
-          </td>
-          <td>$nama_brg
-          </td>
-          <td>$jenis_brg</td>
-          <td>$stok_barang</td>
-          <td>$sisa_barang</td>
+          <td>$brg_prodi_nama</td>
+          <td>$brg_prodi_jumlah</td>
+          <td>$brg_prodi_stok</td>
+          <td>$brg_prodi_tgl_masuk</td>
+          <td>$brg_prodi_tgl_keluar</td>
+          <td>$brg_prodi_jml_masuk</td>
+          <td>$brg_prodi_jml_keluar</td>
+          <td>$prodi_nama</td>
+          
      </tr>
      ";
      }
@@ -109,7 +97,7 @@ while ($hasil = mysqli_fetch_array($Tampil)) {
 //Tutup koneksi engine MySQL
 mysqli_close($Open);
 
-$html .= '</table></div>';
+$html .= '</table>';
 
 // print a block of text using Write()
 $pdf->WriteHTML($html, true, false, true, false, '');
