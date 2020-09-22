@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jul 16, 2020 at 03:23 PM
+-- Generation Time: Sep 22, 2020 at 05:33 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.1
 
@@ -25,56 +25,98 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ambil_barang`
+-- Table structure for table `bagian`
 --
 
-CREATE TABLE `ambil_barang` (
-  `id_ambil_brg` int(5) NOT NULL,
-  `kode_brg` varchar(10) NOT NULL,
-  `jumlah_ambil` int(5) NOT NULL,
-  `tgl_ambil` date NOT NULL,
-  `id_prodi` int(3) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+CREATE TABLE `bagian` (
+  `bagian_id` int(11) NOT NULL,
+  `bagian_nama` varchar(100) CHARACTER SET utf8mb4 NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `ambil_barang`
+-- Dumping data for table `bagian`
 --
 
-INSERT INTO `ambil_barang` (`id_ambil_brg`, `kode_brg`, `jumlah_ambil`, `tgl_ambil`, `id_prodi`) VALUES
-(1, 'BRG0000003', 0, '2020-06-20', 1);
+INSERT INTO `bagian` (`bagian_id`, `bagian_nama`) VALUES
+(2, 'asdfafdfsfs'),
+(3, 'faewaef');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `barang`
+-- Table structure for table `barang_perlengkapan`
 --
 
-CREATE TABLE `barang` (
-  `kode_brg` varchar(10) NOT NULL,
-  `nama_brg` varchar(30) NOT NULL,
-  `no_inventaris` varchar(15) NOT NULL,
-  `jenis_brg` varchar(20) NOT NULL,
-  `tgl_masuk` date NOT NULL,
-  `tgl_keluar` date NOT NULL,
-  `jumlah_masuk` int(11) NOT NULL,
-  `jumlah_keluar` int(11) NOT NULL,
-  `tahun_perolehan` year(4) NOT NULL,
-  `id_satuan` int(3) NOT NULL,
-  `id_kategori` int(3) NOT NULL,
-  `image` varchar(255) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+CREATE TABLE `barang_perlengkapan` (
+  `bp_id` int(11) NOT NULL,
+  `bp_nama` varchar(145) CHARACTER SET utf8mb4 DEFAULT NULL,
+  `bp_thn_perolehan` varchar(45) CHARACTER SET utf8mb4 DEFAULT NULL,
+  `bp_sumber` varchar(145) CHARACTER SET utf8mb4 DEFAULT NULL,
+  `bp_no_inventaris` varchar(145) CHARACTER SET utf8mb4 DEFAULT NULL,
+  `bp_tgl_masuk` date DEFAULT NULL,
+  `bp_tgl_keluar` date DEFAULT NULL,
+  `bp_jenis_barang` varchar(145) CHARACTER SET utf8mb4 DEFAULT NULL,
+  `bp_jumlah_masuk` int(11) DEFAULT NULL,
+  `bp_jumlah_keluar` int(11) DEFAULT NULL,
+  `bp_stok_brg` int(11) DEFAULT NULL,
+  `bp_image` varchar(145) CHARACTER SET utf8mb4 DEFAULT NULL,
+  `bp_kategori_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `barang`
+-- Dumping data for table `barang_perlengkapan`
 --
 
-INSERT INTO `barang` (`kode_brg`, `nama_brg`, `no_inventaris`, `jenis_brg`, `tgl_masuk`, `tgl_keluar`, `jumlah_masuk`, `jumlah_keluar`, `tahun_perolehan`, `id_satuan`, `id_kategori`, `image`) VALUES
-('BRG0000003', 'Nuvo Sabun Mandi 200grm', 'cara 2', 'Sabun', '2020-06-03', '2020-06-03', 30, 1, 2019, 2, 1, 'images.jpg'),
-('BRG0000005', 'Pasta Gigi Pepsodent 1A', '', 'Pasta', '0000-00-00', '0000-00-00', 20, 0, 0000, 0, 0, 'images (1).jpg'),
-('BRG0000017', 'Daia Jeruk Orange 1Kg', '3456dff', 'Detergen', '2020-06-19', '2020-06-13', 3, 2, 2019, 3, 1, ''),
-('BRG0000015', 'Gula', '20100jdeee', 'Dapur', '2020-07-16', '2020-07-25', 13, 2, 2016, 3, 1, ''),
-('BRG0000034', 'shampo', '20100jdEVEW', 'shampo', '2020-07-08', '2020-07-23', 25, 3, 2020, 3, 1, ''),
-('BRG0000019', 'lemari', '20100wejw', 'mabel', '2020-07-09', '2020-07-18', 19, 3, 2019, 2, 1, '');
+INSERT INTO `barang_perlengkapan` (`bp_id`, `bp_nama`, `bp_thn_perolehan`, `bp_sumber`, `bp_no_inventaris`, `bp_tgl_masuk`, `bp_tgl_keluar`, `bp_jenis_barang`, `bp_jumlah_masuk`, `bp_jumlah_keluar`, `bp_stok_brg`, `bp_image`, `bp_kategori_id`) VALUES
+(2, 'spidol', '2000', 'bak', 'skdfjskfd', '2020-09-02', '2020-09-19', 'buah', 45, 5, 8, NULL, 1),
+(4, 'kertas', '7', 'bak', 'skfakf', '2020-09-12', '2020-09-26', 'lembar', 4, 5, 32, '242368.jpg', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `barang_perlengkapan_has_transaksi_perlengkapan`
+--
+
+CREATE TABLE `barang_perlengkapan_has_transaksi_perlengkapan` (
+  `bp_id` int(11) NOT NULL,
+  `tp_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `barang_prodi`
+--
+
+CREATE TABLE `barang_prodi` (
+  `brg_prodi_id` int(11) NOT NULL,
+  `brg_prodi_nama` varchar(145) CHARACTER SET utf8mb4 DEFAULT NULL,
+  `brg_prodi_jumlah` int(11) DEFAULT NULL,
+  `brg_prodi_stok` int(11) DEFAULT NULL,
+  `brg_prodi_tgl_masuk` date DEFAULT NULL,
+  `brg_prodi_tgl_keluar` date DEFAULT NULL,
+  `brg_prodi_jml_masuk` int(11) DEFAULT NULL,
+  `brg_prodi_jml_keluar` int(11) DEFAULT NULL,
+  `brg_prodi_prodi_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `barang_prodi`
+--
+
+INSERT INTO `barang_prodi` (`brg_prodi_id`, `brg_prodi_nama`, `brg_prodi_jumlah`, `brg_prodi_stok`, `brg_prodi_tgl_masuk`, `brg_prodi_tgl_keluar`, `brg_prodi_jml_masuk`, `brg_prodi_jml_keluar`, `brg_prodi_prodi_id`) VALUES
+(2, 'keranjang', 4, 5, '2020-09-10', '2020-09-12', 5, 3, 3);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `barang_prodi_has_transaksi_prodi`
+--
+
+CREATE TABLE `barang_prodi_has_transaksi_prodi` (
+  `brg_prodi_id` int(11) NOT NULL,
+  `t_prodi_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -83,34 +125,40 @@ INSERT INTO `barang` (`kode_brg`, `nama_brg`, `no_inventaris`, `jenis_brg`, `tgl
 --
 
 CREATE TABLE `kategori` (
-  `id_kategori` int(3) NOT NULL,
-  `nama_kategori` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `kategori_id` int(11) NOT NULL,
+  `kategori_nama` varchar(100) CHARACTER SET utf8mb4 NOT NULL,
+  `kategori_jumlah` int(11) DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `kategori`
 --
 
-INSERT INTO `kategori` (`id_kategori`, `nama_kategori`) VALUES
-(1, 'Jakarta Utara');
+INSERT INTO `kategori` (`kategori_id`, `kategori_nama`, `kategori_jumlah`) VALUES
+(1, 'buah', 3);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pakai_barang`
+-- Table structure for table `login`
 --
 
-CREATE TABLE `pakai_barang` (
-  `id_pakai_brg` int(5) NOT NULL,
-  `tgl_pakai` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+CREATE TABLE `login` (
+  `login_id` int(11) NOT NULL,
+  `username` varchar(45) CHARACTER SET utf8mb4 DEFAULT NULL,
+  `password` varchar(145) CHARACTER SET utf8mb4 DEFAULT NULL,
+  `level` varchar(45) CHARACTER SET utf8mb4 DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `pakai_barang`
+-- Dumping data for table `login`
 --
 
-INSERT INTO `pakai_barang` (`id_pakai_brg`, `tgl_pakai`) VALUES
-(2, '2020-06-19');
+INSERT INTO `login` (`login_id`, `username`, `password`, `level`) VALUES
+(1, 'andi', '12345', 'perlengkapan'),
+(2, 'prodi', '12345', 'prodi'),
+(3, 'pegawai', '12345', 'pegawai'),
+(4, 'bagian', '12345', 'bagian');
 
 -- --------------------------------------------------------
 
@@ -119,19 +167,20 @@ INSERT INTO `pakai_barang` (`id_pakai_brg`, `tgl_pakai`) VALUES
 --
 
 CREATE TABLE `pegawai` (
-  `id_pegawai` int(3) NOT NULL,
-  `nip_nid` varchar(25) NOT NULL,
-  `nama_pegawai` varchar(50) NOT NULL,
-  `jabatan` varchar(20) NOT NULL,
-  `id_prodi` int(3) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `pegawai_id` int(11) NOT NULL,
+  `pegawai_nip_nid` varchar(45) CHARACTER SET utf8mb4 DEFAULT NULL,
+  `pegawai_nama` varchar(45) CHARACTER SET utf8mb4 DEFAULT NULL,
+  `pegawai_jabatan` varchar(45) CHARACTER SET utf8mb4 DEFAULT NULL,
+  `pegawai_no_hp` varchar(45) CHARACTER SET utf8mb4 DEFAULT NULL,
+  `pegawai_bagian_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `pegawai`
 --
 
-INSERT INTO `pegawai` (`id_pegawai`, `nip_nid`, `nama_pegawai`, `jabatan`, `id_prodi`) VALUES
-(2, 'f1a316005', 'Andi Kota', 'Mahasiswa', 1);
+INSERT INTO `pegawai` (`pegawai_id`, `pegawai_nip_nid`, `pegawai_nama`, `pegawai_jabatan`, `pegawai_no_hp`, `pegawai_bagian_id`) VALUES
+(4, 'adfad', 'gawerwaa', 'gadwwfs', '3435dfas', 3);
 
 -- --------------------------------------------------------
 
@@ -140,269 +189,241 @@ INSERT INTO `pegawai` (`id_pegawai`, `nip_nid`, `nama_pegawai`, `jabatan`, `id_p
 --
 
 CREATE TABLE `prodi` (
-  `id_prodi` int(3) NOT NULL,
-  `nama_prodi` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `prodi_id` int(11) NOT NULL,
+  `prodi_nama` varchar(100) CHARACTER SET utf8mb4 NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `prodi`
 --
 
-INSERT INTO `prodi` (`id_prodi`, `nama_prodi`) VALUES
-(1, 'Ilmu Komputer S1');
+INSERT INTO `prodi` (`prodi_id`, `prodi_nama`) VALUES
+(3, 'ILKOM');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ruangan`
+-- Table structure for table `transaksi_perlengkapan`
 --
 
-CREATE TABLE `ruangan` (
-  `id_ruangan` int(5) NOT NULL,
-  `nama_ruangan` varchar(50) NOT NULL,
-  `pj` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+CREATE TABLE `transaksi_perlengkapan` (
+  `tp_id` int(11) NOT NULL,
+  `tp_tgl_transaksi` date DEFAULT NULL,
+  `tp_jumlah` int(11) DEFAULT NULL,
+  `tp_bagian_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `ruangan`
+-- Dumping data for table `transaksi_perlengkapan`
 --
 
-INSERT INTO `ruangan` (`id_ruangan`, `nama_ruangan`, `pj`) VALUES
-(2, 'kolaka', 'bupati'),
-(5, 'Kendari 2', 'walikota 2');
+INSERT INTO `transaksi_perlengkapan` (`tp_id`, `tp_tgl_transaksi`, `tp_jumlah`, `tp_bagian_id`) VALUES
+(3, '2020-09-11', 3, 2),
+(5, '2020-09-13', 4, 3);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `satuan`
+-- Table structure for table `transaksi_prodi`
 --
 
-CREATE TABLE `satuan` (
-  `id_satuan` int(3) NOT NULL,
-  `nama_satuan` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+CREATE TABLE `transaksi_prodi` (
+  `t_prodi_id` int(11) NOT NULL,
+  `t_prodi_tgl_transaksi` date DEFAULT NULL,
+  `t_prodi_pegawai_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `satuan`
+-- Dumping data for table `transaksi_prodi`
 --
 
-INSERT INTO `satuan` (`id_satuan`, `nama_satuan`) VALUES
-(2, 'buah'),
-(3, 'lembar');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tempat_brg`
---
-
-CREATE TABLE `tempat_brg` (
-  `id_tempat` int(3) NOT NULL,
-  `kode_brg` varchar(10) NOT NULL,
-  `id_ruangan` int(5) NOT NULL,
-  `tgl_masuk` date NOT NULL,
-  `keadaan` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `tempat_brg`
---
-
-INSERT INTO `tempat_brg` (`id_tempat`, `kode_brg`, `id_ruangan`, `tgl_masuk`, `keadaan`) VALUES
-(1, 'BRG0000003', 2, '2020-06-20', 'Baik');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `user_perlengkapan`
---
-
-CREATE TABLE `user_perlengkapan` (
-  `id_user_perlengkapan` int(3) NOT NULL,
-  `username` varchar(20) NOT NULL,
-  `password` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `user_perlengkapan`
---
-
-INSERT INTO `user_perlengkapan` (`id_user_perlengkapan`, `username`, `password`) VALUES
-(1, 'perlengkapan', 'perlengkapan');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `user_prodi`
---
-
-CREATE TABLE `user_prodi` (
-  `id_user_prodi` int(11) NOT NULL,
-  `username` varchar(20) NOT NULL,
-  `password` varchar(20) NOT NULL,
-  `id_prodi` int(3) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `user_prodi`
---
-
-INSERT INTO `user_prodi` (`id_user_prodi`, `username`, `password`, `id_prodi`) VALUES
-(8, 'prodi', 'prodi', 1);
+INSERT INTO `transaksi_prodi` (`t_prodi_id`, `t_prodi_tgl_transaksi`, `t_prodi_pegawai_id`) VALUES
+(3, '2020-09-30', 4);
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `ambil_barang`
+-- Indexes for table `bagian`
 --
-ALTER TABLE `ambil_barang`
-  ADD PRIMARY KEY (`id_ambil_brg`),
-  ADD KEY `id_prodi` (`id_prodi`);
+ALTER TABLE `bagian`
+  ADD PRIMARY KEY (`bagian_id`);
 
 --
--- Indexes for table `barang`
+-- Indexes for table `barang_perlengkapan`
 --
-ALTER TABLE `barang`
-  ADD PRIMARY KEY (`kode_brg`),
-  ADD KEY `id_satuan` (`id_satuan`),
-  ADD KEY `id_kategori` (`id_kategori`);
+ALTER TABLE `barang_perlengkapan`
+  ADD PRIMARY KEY (`bp_id`),
+  ADD KEY `fk_barang_perlengkapan_kategori1_idx` (`bp_kategori_id`);
+
+--
+-- Indexes for table `barang_perlengkapan_has_transaksi_perlengkapan`
+--
+ALTER TABLE `barang_perlengkapan_has_transaksi_perlengkapan`
+  ADD PRIMARY KEY (`bp_id`,`tp_id`),
+  ADD KEY `fk_barang_perlengkapan_has_transaksi_perlengkapan_transaksi_idx` (`tp_id`),
+  ADD KEY `fk_barang_perlengkapan_has_transaksi_perlengkapan_barang_pe_idx` (`bp_id`);
+
+--
+-- Indexes for table `barang_prodi`
+--
+ALTER TABLE `barang_prodi`
+  ADD PRIMARY KEY (`brg_prodi_id`),
+  ADD KEY `fk_barang_prodi_prodi1_idx` (`brg_prodi_prodi_id`);
+
+--
+-- Indexes for table `barang_prodi_has_transaksi_prodi`
+--
+ALTER TABLE `barang_prodi_has_transaksi_prodi`
+  ADD PRIMARY KEY (`brg_prodi_id`,`t_prodi_id`),
+  ADD KEY `fk_barang_prodi_has_transaksi_prodi_transaksi_prodi1_idx` (`t_prodi_id`),
+  ADD KEY `fk_barang_prodi_has_transaksi_prodi_barang_prodi1_idx` (`brg_prodi_id`);
 
 --
 -- Indexes for table `kategori`
 --
 ALTER TABLE `kategori`
-  ADD PRIMARY KEY (`id_kategori`);
+  ADD PRIMARY KEY (`kategori_id`);
 
 --
--- Indexes for table `pakai_barang`
+-- Indexes for table `login`
 --
-ALTER TABLE `pakai_barang`
-  ADD PRIMARY KEY (`id_pakai_brg`);
+ALTER TABLE `login`
+  ADD PRIMARY KEY (`login_id`);
 
 --
 -- Indexes for table `pegawai`
 --
 ALTER TABLE `pegawai`
-  ADD PRIMARY KEY (`id_pegawai`);
+  ADD PRIMARY KEY (`pegawai_id`),
+  ADD KEY `fk_pegawai_bagian1_idx` (`pegawai_bagian_id`);
 
 --
 -- Indexes for table `prodi`
 --
 ALTER TABLE `prodi`
-  ADD PRIMARY KEY (`id_prodi`);
+  ADD PRIMARY KEY (`prodi_id`);
 
 --
--- Indexes for table `ruangan`
+-- Indexes for table `transaksi_perlengkapan`
 --
-ALTER TABLE `ruangan`
-  ADD PRIMARY KEY (`id_ruangan`);
+ALTER TABLE `transaksi_perlengkapan`
+  ADD PRIMARY KEY (`tp_id`),
+  ADD KEY `fk_transaksi_perlengkapan_bagian_idx` (`tp_bagian_id`);
 
 --
--- Indexes for table `satuan`
+-- Indexes for table `transaksi_prodi`
 --
-ALTER TABLE `satuan`
-  ADD PRIMARY KEY (`id_satuan`);
-
---
--- Indexes for table `tempat_brg`
---
-ALTER TABLE `tempat_brg`
-  ADD PRIMARY KEY (`id_tempat`),
-  ADD KEY `id_ruangan` (`id_ruangan`);
-
---
--- Indexes for table `user_perlengkapan`
---
-ALTER TABLE `user_perlengkapan`
-  ADD PRIMARY KEY (`id_user_perlengkapan`);
-
---
--- Indexes for table `user_prodi`
---
-ALTER TABLE `user_prodi`
-  ADD PRIMARY KEY (`id_user_prodi`);
+ALTER TABLE `transaksi_prodi`
+  ADD PRIMARY KEY (`t_prodi_id`),
+  ADD KEY `fk_transaksi_prodi_pegawai1_idx` (`t_prodi_pegawai_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT for table `ambil_barang`
+-- AUTO_INCREMENT for table `bagian`
 --
-ALTER TABLE `ambil_barang`
-  MODIFY `id_ambil_brg` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+ALTER TABLE `bagian`
+  MODIFY `bagian_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `barang_perlengkapan`
+--
+ALTER TABLE `barang_perlengkapan`
+  MODIFY `bp_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `barang_prodi`
+--
+ALTER TABLE `barang_prodi`
+  MODIFY `brg_prodi_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `kategori`
 --
 ALTER TABLE `kategori`
-  MODIFY `id_kategori` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `kategori_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `pakai_barang`
+-- AUTO_INCREMENT for table `login`
 --
-ALTER TABLE `pakai_barang`
-  MODIFY `id_pakai_brg` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+ALTER TABLE `login`
+  MODIFY `login_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `pegawai`
 --
 ALTER TABLE `pegawai`
-  MODIFY `id_pegawai` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `pegawai_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `prodi`
 --
 ALTER TABLE `prodi`
-  MODIFY `id_prodi` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `prodi_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `ruangan`
+-- AUTO_INCREMENT for table `transaksi_perlengkapan`
 --
-ALTER TABLE `ruangan`
-  MODIFY `id_ruangan` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+ALTER TABLE `transaksi_perlengkapan`
+  MODIFY `tp_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT for table `satuan`
+-- AUTO_INCREMENT for table `transaksi_prodi`
 --
-ALTER TABLE `satuan`
-  MODIFY `id_satuan` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT for table `tempat_brg`
---
-ALTER TABLE `tempat_brg`
-  MODIFY `id_tempat` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT for table `user_perlengkapan`
---
-ALTER TABLE `user_perlengkapan`
-  MODIFY `id_user_perlengkapan` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `user_prodi`
---
-ALTER TABLE `user_prodi`
-  MODIFY `id_user_prodi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+ALTER TABLE `transaksi_prodi`
+  MODIFY `t_prodi_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Constraints for dumped tables
 --
 
 --
--- Constraints for table `ambil_barang`
+-- Constraints for table `barang_perlengkapan`
 --
-ALTER TABLE `ambil_barang`
-  ADD CONSTRAINT `ambil_barang_ibfk_1` FOREIGN KEY (`id_prodi`) REFERENCES `prodi` (`id_prodi`);
+ALTER TABLE `barang_perlengkapan`
+  ADD CONSTRAINT `fk_barang_perlengkapan_kategori1` FOREIGN KEY (`bp_kategori_id`) REFERENCES `kategori` (`kategori_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `tempat_brg`
+-- Constraints for table `barang_perlengkapan_has_transaksi_perlengkapan`
 --
-ALTER TABLE `tempat_brg`
-  ADD CONSTRAINT `tempat_brg_ibfk_1` FOREIGN KEY (`id_ruangan`) REFERENCES `ruangan` (`id_ruangan`);
+ALTER TABLE `barang_perlengkapan_has_transaksi_perlengkapan`
+  ADD CONSTRAINT `fk_barang_perlengkapan_has_transaksi_perlengkapan_barang_perl1` FOREIGN KEY (`bp_id`) REFERENCES `barang_perlengkapan` (`bp_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_barang_perlengkapan_has_transaksi_perlengkapan_transaksi_p1` FOREIGN KEY (`tp_id`) REFERENCES `transaksi_perlengkapan` (`tp_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `barang_prodi`
+--
+ALTER TABLE `barang_prodi`
+  ADD CONSTRAINT `fk_barang_prodi_prodi1` FOREIGN KEY (`brg_prodi_prodi_id`) REFERENCES `prodi` (`prodi_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `barang_prodi_has_transaksi_prodi`
+--
+ALTER TABLE `barang_prodi_has_transaksi_prodi`
+  ADD CONSTRAINT `fk_barang_prodi_has_transaksi_prodi_barang_prodi1` FOREIGN KEY (`brg_prodi_id`) REFERENCES `barang_prodi` (`brg_prodi_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_barang_prodi_has_transaksi_prodi_transaksi_prodi1` FOREIGN KEY (`t_prodi_id`) REFERENCES `transaksi_prodi` (`t_prodi_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `pegawai`
+--
+ALTER TABLE `pegawai`
+  ADD CONSTRAINT `fk_pegawai_bagian1` FOREIGN KEY (`pegawai_bagian_id`) REFERENCES `bagian` (`bagian_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `transaksi_perlengkapan`
+--
+ALTER TABLE `transaksi_perlengkapan`
+  ADD CONSTRAINT `fk_transaksi_perlengkapan_bagian` FOREIGN KEY (`tp_bagian_id`) REFERENCES `bagian` (`bagian_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `transaksi_prodi`
+--
+ALTER TABLE `transaksi_prodi`
+  ADD CONSTRAINT `fk_transaksi_prodi_pegawai1` FOREIGN KEY (`t_prodi_pegawai_id`) REFERENCES `pegawai` (`pegawai_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
