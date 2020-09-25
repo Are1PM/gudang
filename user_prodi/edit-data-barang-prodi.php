@@ -11,7 +11,6 @@
      if (isset($_POST['Edit'])) {
           $brg_prodi_id     = $_POST['hbrg_prodi_id'];
           $brg_prodi_nama     = $_POST['brg_prodi_nama'];
-          $brg_prodi_jumlah     = $_POST['brg_prodi_jumlah'];
           $brg_prodi_stok     = $_POST['brg_prodi_stok'];
           $brg_prodi_tgl_masuk     = stripslashes($_POST['brg_prodi_tgl_masuk']);
           $brg_prodi_tgl_keluar     = stripslashes($_POST['brg_prodi_tgl_keluar']);
@@ -22,7 +21,6 @@
           //update data
           $query = "UPDATE barang_prodi SET 
                     brg_prodi_nama='$brg_prodi_nama',
-                    brg_prodi_jumlah='$brg_prodi_jumlah',
                     brg_prodi_stok='$brg_prodi_stok',
                     brg_prodi_tgl_masuk='$brg_prodi_tgl_masuk',
                     brg_prodi_tgl_keluar='$brg_prodi_tgl_keluar',
@@ -46,7 +44,6 @@
      $hasil = mysqli_fetch_array($sql);
      $brg_prodi_id     = $hasil['brg_prodi_id'];
      $brg_prodi_nama          = $hasil['brg_prodi_nama'];
-     $brg_prodi_jumlah          = $hasil['brg_prodi_jumlah'];
      $brg_prodi_stok     = $hasil['brg_prodi_stok'];
      $brg_prodi_tgl_masuk     = stripslashes($hasil['brg_prodi_tgl_masuk']);
      $brg_prodi_tgl_keluar     = stripslashes($hasil['brg_prodi_tgl_keluar']);
@@ -90,11 +87,6 @@
                     <td>&nbsp;</td>
                     <td height="36">Nama Barang</td>
                     <td><input type="text" name="brg_prodi_nama" size="30" maxlength="30" value="<?= $brg_prodi_nama ?>"></td>
-               </tr>
-               <tr>
-                    <td>&nbsp;</td>
-                    <td height="36">Jumlah Barang</td>
-                    <td><input type="text" name="brg_prodi_jumlah" size="30" maxlength="30" value="<?= $brg_prodi_jumlah ?>"></td>
                </tr>
                <tr>
                     <td>&nbsp;</td>

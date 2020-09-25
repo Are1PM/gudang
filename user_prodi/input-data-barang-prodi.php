@@ -3,7 +3,6 @@
 if ($_POST['Submit'] == "Submit") {
 	//Kirimkan Variabel
 	$brg_prodi_nama	= $_POST['brg_prodi_nama'];
-	$brg_prodi_jumlah	= $_POST['brg_prodi_jumlah'];
 	$brg_prodi_stok	= stripslashes($_POST['brg_prodi_stok']);
 	$brg_prodi_tgl_masuk	= stripslashes($_POST['brg_prodi_tgl_masuk']);
 	$brg_prodi_tgl_keluar	= stripslashes($_POST['brg_prodi_tgl_keluar']);
@@ -14,7 +13,6 @@ if ($_POST['Submit'] == "Submit") {
 	//validasi data jika kosong
 	if (
 		empty($_POST['brg_prodi_nama']) ||
-		empty($_POST['brg_prodi_jumlah']) ||
 		empty($_POST['brg_prodi_stok']) ||
 		empty($_POST['brg_prodi_tgl_masuk']) ||
 		empty($_POST['brg_prodi_tgl_keluar']) ||
@@ -34,7 +32,6 @@ if ($_POST['Submit'] == "Submit") {
 	$input	= "INSERT INTO barang_prodi VALUES (
 		null,
 		'$brg_prodi_nama',
-		'$brg_prodi_jumlah',
 		'$brg_prodi_stok',
 		'$brg_prodi_tgl_masuk',
 		'$brg_prodi_tgl_keluar',

@@ -30,11 +30,6 @@
 			</tr>
 			<tr>
 				<td height="36">&nbsp;</td>
-				<td>Jumlah Barang</td>
-				<td><input type="number" name="brg_prodi_jumlah" size="20"></td>
-			</tr>
-			<tr>
-				<td height="36">&nbsp;</td>
 				<td>Stok Barang</td>
 				<td><input type="number" name="brg_prodi_stok" size="30"></td>
 			</tr>
