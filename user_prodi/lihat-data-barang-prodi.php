@@ -8,7 +8,6 @@
           <tr bgcolor="#FF6600" height="25px">
                <th width="5%">No</td>&nbsp;
                <th width="15%">Nama Barang</td>&nbsp;
-               <th width="10%">Jumlah Barang</td>&nbsp;
                <th width="10%">Stok Barang</td>&nbsp;
                <th width="10%">Tanggal Masuk</td>&nbsp;
                <th width="10%">Tanggal Keluar</td>&nbsp;
@@ -26,7 +25,6 @@
           while ($hasil = mysqli_fetch_array($Tampil)) {
                $brg_prodi_id          = stripslashes($hasil['brg_prodi_id']);
                $brg_prodi_nama     = stripslashes($hasil['brg_prodi_nama']);
-               $brg_prodi_jumlah     = stripslashes($hasil['brg_prodi_jumlah']);
                $brg_prodi_stok     = stripslashes($hasil['brg_prodi_stok']);
                $brg_prodi_tgl_masuk     = stripslashes($hasil['brg_prodi_tgl_masuk']);
                $brg_prodi_tgl_keluar     = stripslashes($hasil['brg_prodi_tgl_keluar']);
@@ -45,14 +43,11 @@
                          <td>&nbsp;</td>
                          <td>&nbsp;</td>
                          <td>&nbsp;</td>
-                         <td>&nbsp;</td>
                     </tr>
                     <tr align="center">
                          <td height="32"><?= $nomer ?><div align="center"></div>
                          </td>
                          <td><?= $brg_prodi_nama ?><div align="center"></div>
-                         </td>
-                         <td><?= $brg_prodi_jumlah ?><div align="center"></div>
                          </td>
                          <td><?= $brg_prodi_stok ?><div align="center"></div>
                          </td>
@@ -72,7 +67,6 @@
                          </td>
                     </tr>
                     <tr align="center" bgcolor="#DFE6EF">
-                         <td>&nbsp;</td>
                          <td>&nbsp;</td>
                          <td>&nbsp;</td>
                          <td>&nbsp;</td>
