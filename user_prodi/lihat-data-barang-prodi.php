@@ -18,7 +18,8 @@
           </tr>
           <?php
           include "../koneksi.php";
-          $Cari = "SELECT * FROM barang_prodi bp LEFT JOIN prodi p ON p.prodi_id=bp.brg_prodi_prodi_id ORDER BY brg_prodi_id";
+          $prodi_id = $_SESSION['prodi_id'];
+          $Cari = "SELECT * FROM barang_prodi bp LEFT JOIN prodi p ON p.prodi_id=bp.brg_prodi_prodi_id WHERE bp.brg_prodi_prodi_id=$prodi_id ORDER BY brg_prodi_id";
           $Tampil = mysqli_query($Open, $Cari);
           $nomer = 0;
 
