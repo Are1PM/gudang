@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Sep 22, 2020 at 05:33 AM
+-- Generation Time: Oct 08, 2020 at 05:02 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.1
 
@@ -82,6 +82,13 @@ CREATE TABLE `barang_perlengkapan_has_transaksi_perlengkapan` (
   `tp_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `barang_perlengkapan_has_transaksi_perlengkapan`
+--
+
+INSERT INTO `barang_perlengkapan_has_transaksi_perlengkapan` (`bp_id`, `tp_id`) VALUES
+(4, 9);
+
 -- --------------------------------------------------------
 
 --
@@ -91,7 +98,6 @@ CREATE TABLE `barang_perlengkapan_has_transaksi_perlengkapan` (
 CREATE TABLE `barang_prodi` (
   `brg_prodi_id` int(11) NOT NULL,
   `brg_prodi_nama` varchar(145) CHARACTER SET utf8mb4 DEFAULT NULL,
-  `brg_prodi_jumlah` int(11) DEFAULT NULL,
   `brg_prodi_stok` int(11) DEFAULT NULL,
   `brg_prodi_tgl_masuk` date DEFAULT NULL,
   `brg_prodi_tgl_keluar` date DEFAULT NULL,
@@ -104,8 +110,8 @@ CREATE TABLE `barang_prodi` (
 -- Dumping data for table `barang_prodi`
 --
 
-INSERT INTO `barang_prodi` (`brg_prodi_id`, `brg_prodi_nama`, `brg_prodi_jumlah`, `brg_prodi_stok`, `brg_prodi_tgl_masuk`, `brg_prodi_tgl_keluar`, `brg_prodi_jml_masuk`, `brg_prodi_jml_keluar`, `brg_prodi_prodi_id`) VALUES
-(2, 'keranjang', 4, 5, '2020-09-10', '2020-09-12', 5, 3, 3);
+INSERT INTO `barang_prodi` (`brg_prodi_id`, `brg_prodi_nama`, `brg_prodi_stok`, `brg_prodi_tgl_masuk`, `brg_prodi_tgl_keluar`, `brg_prodi_jml_masuk`, `brg_prodi_jml_keluar`, `brg_prodi_prodi_id`) VALUES
+(2, 'keranjang', 5, '2020-09-10', '2020-09-12', 5, 3, 3);
 
 -- --------------------------------------------------------
 
@@ -190,15 +196,18 @@ INSERT INTO `pegawai` (`pegawai_id`, `pegawai_nip_nid`, `pegawai_nama`, `pegawai
 
 CREATE TABLE `prodi` (
   `prodi_id` int(11) NOT NULL,
-  `prodi_nama` varchar(100) CHARACTER SET utf8mb4 NOT NULL
+  `prodi_nama` varchar(100) CHARACTER SET utf8mb4 NOT NULL,
+  `username` varchar(45) NOT NULL,
+  `password` varchar(45) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `prodi`
 --
 
-INSERT INTO `prodi` (`prodi_id`, `prodi_nama`) VALUES
-(3, 'ILKOM');
+INSERT INTO `prodi` (`prodi_id`, `prodi_nama`, `username`, `password`) VALUES
+(3, 'ILKOM', 'ilkom', '12345'),
+(4, 'STATISTIKA', 'statistik', '12345');
 
 -- --------------------------------------------------------
 
@@ -219,7 +228,10 @@ CREATE TABLE `transaksi_perlengkapan` (
 
 INSERT INTO `transaksi_perlengkapan` (`tp_id`, `tp_tgl_transaksi`, `tp_jumlah`, `tp_bagian_id`) VALUES
 (3, '2020-09-11', 3, 2),
-(5, '2020-09-13', 4, 3);
+(5, '2020-09-13', 4, 3),
+(6, '2020-09-17', 4, 2),
+(7, '2020-09-17', 4, 2),
+(9, '2020-09-11', 3, 3);
 
 -- --------------------------------------------------------
 
@@ -363,13 +375,13 @@ ALTER TABLE `pegawai`
 -- AUTO_INCREMENT for table `prodi`
 --
 ALTER TABLE `prodi`
-  MODIFY `prodi_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `prodi_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `transaksi_perlengkapan`
 --
 ALTER TABLE `transaksi_perlengkapan`
-  MODIFY `tp_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `tp_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `transaksi_prodi`
