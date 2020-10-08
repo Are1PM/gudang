@@ -11,6 +11,7 @@
 	//proses edit data satuan
 	if (isset($_POST['Edit'])) {
 		$tp_id	= $_POST['htp_id'];
+		$bp_id	= $_POST['bp_id'];
 		$tp_tgl_transaksi	= $_POST['tp_tgl_transaksi'];
 		$tp_jumlah = $_POST['tp_jumlah'];
 		$tp_bagian_id		= $_POST['tp_bagian_id'];
@@ -24,25 +25,35 @@
 		$sql = mysqli_query($Open, $query);
 		//setelah berhasil update
 		if ($sql) {
-			echo "<h3><font color=green><center><blink>Data Transaksi Perlengkapan Berhasil diedit</blink></center></font></h3>
-			<input type='button' value='Back To View' onclick=location.href='home_perlengkapan.php?page=lihat-data-transaksi-perlengkapan' title='kembali ke form lihat data transaksi perlengkapan'><br><br>";
+
+			$query = "UPDATE barang_perlengkapan_has_transaksi_perlengkapan SET
+				bp_id='$bp_id'
+			WHERE tp_id='$tp_id'";
+			$exec = mysqli_query($Open, $query);
+			if ($exec) {
+				echo "<h3><font color=green><center><blink>Data Transaksi Perlengkapan Berhasil diedit</blink></center></font></h3>
+				<input type='button' value='Back To View' onclick=location.href='home_perlengkapan.php?page=lihat-data-transaksi-perlengkapan' title='kembali ke form lihat data transaksi perlengkapan'><br><br>";
+			}
 		} else {
 			echo "<h3><font color=red><center>Data transaksi perlengkapan gagal diedit</center></font></h3>";
 		}
 	}
 
 	//Tampilkan data dari tabel satuan
-	$query = "SELECT * FROM transaksi_perlengkapan WHERE tp_id='$tp_id'";
+	$query = "SELECT * FROM transaksi_perlengkapan tp, barang_perlengkapan_has_transaksi_perlengkapan bptp WHERE tp.tp_id='$tp_id' AND bptp.tp_id='$tp_id'";
 	$sql = mysqli_query($Open, $query);
 	$hasil = mysqli_fetch_array($sql);
 
 	$tp_id	= $hasil['tp_id'];
+	$bp_id	= $hasil['bp_id'];
 	$tp_jumlah = $hasil['tp_jumlah'];
 	$tp_tgl_transaksi	= $hasil['tp_tgl_transaksi'];
 	$tp_bagian_id		= $hasil['tp_bagian_id'];
 
 	$q = "SELECT * FROM bagian ORDER BY bagian_nama";
 	$tampil_bagian = mysqli_query($Open, $q);
+	$q = "SELECT * FROM barang_perlengkapan ORDER BY bp_nama";
+	$tampil_bp = mysqli_query($Open, $q);
 
 
 	?>
@@ -66,6 +77,22 @@
 				<td width="142" height="36"></td>
 				<td width="550">
 					<input type="hidden" name="htp_id" value="<?= $tp_id ?>"></td>
+			</tr>
+			<tr>
+				<td height="36">&nbsp;</td>
+				<td>bagian</td>
+				<td>
+					<select name="bp_id">
+						<option value="0">-- Pilih bagian --</option>
+						<?php
+						while ($hasil = mysqli_fetch_array($tampil_bp)) :
+						?>
+							<option value="<?= $hasil['bp_id'] ?>" <?= ($bp_id == $hasil['bp_id']) ? "selected" : ""; ?>><?= $hasil['bp_nama'] ?></option>
+						<?php
+						endwhile;
+						?>
+					</select>
+				</td>
 			</tr>
 			<tr>
 				<td height="36">&nbsp;</td>

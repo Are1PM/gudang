@@ -2,6 +2,8 @@
 	<?php
 	include '../koneksi.php';
 
+	$q = "SELECT * FROM barang_perlengkapan ORDER BY bp_nama";
+	$tampil_bp = mysqli_query($Open, $q);
 	$q = "SELECT * FROM bagian ORDER BY bagian_nama";
 	$tampil_bagian = mysqli_query($Open, $q);
 
@@ -19,6 +21,22 @@
 				<td>&nbsp;</td>
 				<td>
 					<font size="3"><b>FORM EDIT DATA TRANSAKSI PERLENGKAPAN</b></font>
+				</td>
+			</tr>
+			<tr>
+				<td height="36">&nbsp;</td>
+				<td>bagian</td>
+				<td>
+					<select name="bp_id">
+						<option value="0">-- Pilih barang --</option>
+						<?php
+						while ($hasil = mysqli_fetch_array($tampil_bp)) :
+						?>
+							<option value="<?= $hasil['bp_id'] ?>"><?= $hasil['bp_nama'] ?></option>
+						<?php
+						endwhile;
+						?>
+					</select>
 				</td>
 			</tr>
 			<tr>

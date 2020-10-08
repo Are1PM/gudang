@@ -1,8 +1,8 @@
 Dari Hasil Konsul Kemarin ada beberapa masukannya bapak akh:
 
-1. Di Entitas Transaksi barang Perlengkapan dan  transaksi barang prodi ditambah nama barang yang diambil
+#1. Di Entitas Transaksi barang Perlengkapan dan  transaksi barang prodi ditambah nama barang yang diambil
 
-2. Grafik Data barang di perjelas...Misal Grafik data Barang Apa. Jadi akh dibuatkan nama grafikx yaitu Grafik Data barang masuk sja akh
+#2. Grafik Data barang di perjelas...Misal Grafik data Barang Apa. Jadi akh dibuatkan nama grafikx yaitu Grafik Data barang masuk sja akh
 
 3. Di Menu Master Kategori Barang nanti Kategorinya akan muncul jumlahx secara otomatis...misal Jumlah baikx berapa, rusak berat berapa, Rusak Ringan brpa..Nanti Patokanx di master Data Barang pada bagian kategori..
 

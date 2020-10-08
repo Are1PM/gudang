@@ -12,7 +12,10 @@ if (isset($_GET['tp_id'])) {
 }
 //proses delete data
 if (!empty($tp_id) && $tp_id != "") {
+
     $hapus = "DELETE FROM transaksi_perlengkapan WHERE tp_id='$tp_id'";
+    $hapus_bptp = "DELETE FROM barang_perlengkapan_has_transaksi_perlengkapan WHERE tp_id='$tp_id'";
+    $sql = mysqli_query($Open, $hapus_bptp);
     $sql = mysqli_query($Open, $hapus);
     if ($sql) {
 ?>

@@ -19,7 +19,7 @@
                     <div class="card">
                         <div class="card-header">
                             <h2 class="card-title">
-                                Grafik Data Barang
+                                Grafik Data Barang Masuk
                             </h2>
                             <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
 
