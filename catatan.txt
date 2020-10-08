@@ -1,0 +1,11 @@
+Dari Hasil Konsul Kemarin ada beberapa masukannya bapak akh:
+
+1. Di Entitas Transaksi barang Perlengkapan dan  transaksi barang prodi ditambah nama barang yang diambil
+
+2. Grafik Data barang di perjelas...Misal Grafik data Barang Apa. Jadi akh dibuatkan nama grafikx yaitu Grafik Data barang masuk sja akh
+
+3. Di Menu Master Kategori Barang nanti Kategorinya akan muncul jumlahx secara otomatis...misal Jumlah baikx berapa, rusak berat berapa, Rusak Ringan brpa..Nanti Patokanx di master Data Barang pada bagian kategori..
+
+4. Bisa dibuat akh..kalau Di perlengkapan di input barang apa yg mau di ambil..maka otomatis akan muncul juga barang di prodi...misalx user prodi Ilmu Komputer yg ambil maka aka muncul di prodi Ilmu Komputer  barang apa yang diambil..
+
+5. Dibuatkan juga user per prodi akh...jadi kalau dari prodi ILKOM mengambil barang maka dari pegawai prodi ILKOM saja yg bisa gunakan akh..
